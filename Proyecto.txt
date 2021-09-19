@@ -32,9 +32,11 @@ Presentación del equipo de trabajo MisticScrum1
   aunque si he programado en otros lenguajes que ya están en desuso,
   trabaje en visil basic de forma autodidacta.
   Mis gustos 
-  la electricdad, tengo dideñadas unos alaves en poliestireno expandido, me farta hacer el montaje
+  la electricdad, he dideñados unos alaves en poliestireno expandido, me falta hacer el montaje
   y pruebas de fuincionalidad, en los intentos anteriores los alabes erran fijos y presentaban
-  mucha resistencia al viento.
+  mucha resistencia al viento. tambien desarolle una bateria no tine mucha potencia pero se 
+  incrementa al recibir luz solar pero necesito laminas de grafito o grafeno para mejorarlas. 
+  
 
 =================================================================================================
 >>>>>>> 48d1fd6789ceb18a34308f3c64c71bd3262fc0b5
