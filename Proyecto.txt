@@ -35,7 +35,7 @@ Presentación del equipo de trabajo MisticScrum1
   la electricdad, he dideñados unos alaves en poliestireno expandido, me falta hacer el montaje
   y pruebas de fuincionalidad, en los intentos anteriores los alabes erran fijos y presentaban
   mucha resistencia al viento. tambien desarolle una bateria no tine mucha potencia pero se 
-  incrementa al recibir luz solar pero necesito laminas de grafito o grafeno para mejorarlas. 
+  incrementa al recibir luz solar o calor pero necesito laminas de grafito o grafeno para mejorarlas. 
   
 
 =================================================================================================
