@@ -4,26 +4,26 @@ tienda online; pasando por todas sus etapas, analisis, diseño y desarrollo logr
 aplicación completa y funcional.
 
 Presentación del equipo de trabajo MisticScrum1
-
+=============================================================================================
 - Santiago almendra rojas:
    Tengo 20 años, vivo en 
    yumbo-Valle del Cauca, soy Técnico aux en sistemas.
    En cuanto a programación tengo conocimiento previo
    a este curso en diferentes lenguajes y bases de datos
-==========================================================================================
+=============================================================================================
 -Cristina Calle.
   Tengo 32 años, 
   residente en Medellín,
   soy economista analista de datos
   Con experiencia en Python y R.
-===========================================================================================
+===============================================================================================
 -Leon Dario Buitrago:
   tengo 27 años,
   resido en el municipio de la union antioquia,
   actualmente me dedico a produccion y comercializacion de productos agropecuarios
   ademas de ello me encuentro realizando el curso de mision tic y otro curso de programacion en
   el SENA. editado
-==========================================================================================
+================================================================================================
 Andersso Hernandez Martinez.
   tengo 41 años de edad
   residente en Montería Córdoba, 
@@ -32,7 +32,7 @@ Andersso Hernandez Martinez.
   aunque si he programado en otros lenguajes que ya están en desuso.
 <<<<<<< HEAD
 
-=================================================================================================0
+=================================================================================================
 >>>>>>> 48d1fd6789ceb18a34308f3c64c71bd3262fc0b5
 
 -Lina Morales.
