@@ -24,27 +24,50 @@
 
 <h1>Usuario</h1>
     <p class="texto">
-        Búsqueda de usuario: <input type="search" name="busquedausuariio" placeholder="identificación">
+        Búsqueda de usuario: <input type="search" name="busquedausuario" placeholder="identificación">
         <input type="submit" value="Buscar">
       </p>
 
-    <table border class="span">
+    <table border class="tabla">
         <tr>
             <th>Identificador</th>
             <th>Nombre</th>
             <th>Rol</th>
-            <th>Permisos</th>
+            <th>Ingresar vendedores</th>
+            <th>Ingresar pedidos</th>
+            <th>Editar ventas</th>
         </tr>
         <tr>
-          <td>1004999340</td>
+          <td>19030949944</td>
           <td>Juan Perez</td>
           <td>Vendedor</td>
-          <td>Total</td>
-          
+          <td>Si</td>
+          <td>No</td>
+          <td>No</td>
         </tr>
 
-      
+ 
       </table>
+      <br>  
+      <h2>Editar Usuario</h2>
+      <br>  
+      <div>
+        <p class="texto">
+          Identificación: <input type="text" name="identificación" placeholder="Identificación">
+        </p>
+        <p class="texto">
+          Nombre: <input type="text" name="nombre" placeholder="Nombre">
+        </p>
+        <p class="texto">
+          Rol: <input type="text" name="rol" placeholder="Rol">
+        </p>
+        <label><input type="checkbox" id="cbox1" value="permiso1"> Ingresar vendedores </label>
+        <label><input type="checkbox" id="cbox2" value="permiso2"> Ingresar pendidos </label>
+        <label><input type="checkbox" id="cbox3" value="permiso3"> Editar ventas </label>
+        <br>
+      </div>
+      <br> 
+      <input type="submit" value="Enviar">
 
 
 </body>
