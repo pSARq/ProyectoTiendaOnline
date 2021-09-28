@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar ventas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body class="body">
+    <nav class="navbar navbar-light bg-light barr-a">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Registro de ventas</a>
+        </div>
+      </nav>
+   <br>
+   <h4> 
+    <form class="formulario" method="POST">
+    <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            Vendedor:
+            <br>
+            Fecha pedido<input type="date" name="fecha" id="fecha">
+            <br>
+            <br>
+            <center>Datos del cliente</center>
+            <br>
+            <br>
+            
+            <p>Nombres:&nbsp;&nbsp;<input type="text"></p>
+            <p>Apellidos:&nbsp;&nbsp;<input type="text"></p>
+            <p>Documento:&nbsp;&nbsp;<input type="number"></p>
+          </div>
+          <div class="col12 col-lg-6">
+            
+    <div>
+    <select name="productos">
+    <option value="">seleccionar producto</option> 
+   <option value="producto1">Producto 1</option> 
+   <option value="producto2">producto 2</option> 
+   <option value="producto3">producto 3</option>
+   <option value="producto4">producto 4</option> 
+   <option value="producto5">producto5</option> 
+   <option value="producto6">producto6</option> 
+</select>
+<label>Cantidad</label><input type="number" value="cantidad" name="cantidad" min="3" max="100"><input type="submit" value="Agregar" class="boton">
+                </div>
+            
+                    <br> 
+                
+            
+             
+            <table id="listado" class='hide' >
+                <tr class="barr-a">
+                    <td>
+                        <th>Id </th>
+                    </td>
+                <td >
+                    <th >Producto</th>
+                    
+                </td>
+                <td>
+                    <th>Cantidad</th>
+                </td>
+                <td>
+                    <th>Precio unitario</th>
+                </td>
+                <td>
+                    <th>Subtotal</th>
+                </td>
+                </tr>
+                <tr>
+                    <td >
+                        <th >(borrador)</th>
+                        
+                    </td>
+                    <td >
+                        <th >(borrador)</th>
+                        
+                    </td>
+                    <td>
+                        <th>(borrador)</th>
+                    </td>
+                    <td>
+                        <th>(borrador)</th>
+                    </td>
+                    <td>
+                        <th>(borrador)</th>
+                    </td>
+                    </tr>
+                   
+            </table>
+            <label>Total a pagar</label><input type="text" name="Total a pagar">
+          </div>
+         
+        <div class="container botn-flotante">
+            <div class="row">
+              <div class="col">
+                <input type="submit" value="Enviar" class="boton">
+                
+              </div>
+              <div class="col">
+                <input type="reset" value="Nueva venta" class="boton">
+              </div>
+              <div class="col">
+                <input type="reset" value="Limpiar" class="boton">
+              </div>
+            </div>
+          </div>
+        </form>
+    </h4>
+
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
