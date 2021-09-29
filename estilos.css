@@ -15,11 +15,11 @@ table {
     font-weight: 700;
     font-size: 24px;
  }
- .body{
+ .body-r{
      background-color: #67DBA5;
      font-family: 'Roboto', sans-serif;
  }
- .boton{
+ .boton-r{
      background-color: #6167E8;
      border-radius: 8px;
      padding-left: 20px;

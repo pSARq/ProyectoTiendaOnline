@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body class="body">
+<body class="body-r">
     <nav class="navbar navbar-light bg-light barr-a">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Registro de ventas</a>
@@ -22,13 +22,12 @@
           <div class="col-12 col-lg-6">
             Vendedor:
             <br>
-            Fecha pedido<input type="date" name="fecha" id="fecha">
+            Fecha venta<input type="date" name="fecha" id="fecha">
+            <br>
             <br>
             <br>
             <center>Datos del cliente</center>
             <br>
-            <br>
-            
             <p>Nombres:&nbsp;&nbsp;<input type="text"></p>
             <p>Apellidos:&nbsp;&nbsp;<input type="text"></p>
             <p>Documento:&nbsp;&nbsp;<input type="number"></p>
@@ -45,7 +44,7 @@
    <option value="producto5">producto5</option> 
    <option value="producto6">producto6</option> 
 </select>
-<label>Cantidad</label><input type="number" value="cantidad" name="cantidad" min="3" max="100"><input type="submit" value="Agregar" class="boton">
+<label>Cantidad</label><input type="number" value="cantidad" name="cantidad" min="3" max="100"><input type="submit" value="Agregar" class="boton-r">
                 </div>
             
                     <br> 
@@ -54,50 +53,40 @@
              
             <table id="listado" class='hide' >
                 <tr class="barr-a">
-                    <td>
-                        <th>Id </th>
-                    </td>
-                <td >
+                    
+                    <th>Id </th>
+                   
                     <th >Producto</th>
                     
-                </td>
-                <td>
+                
                     <th>Cantidad</th>
-                </td>
-                <td>
+                
                     <th>Precio unitario</th>
-                </td>
-                <td>
+               
                     <th>Subtotal</th>
-                </td>
+                
                 </tr>
                 <tr>
-                    <td >
-                        <th >(borrador)</th>
+                    <td >(borrador)</td>
                         
-                    </td>
-                    <td >
-                        <th >(borrador)</th>
-                        
-                    </td>
-                    <td>
-                        <th>(borrador)</th>
-                    </td>
-                    <td>
-                        <th>(borrador)</th>
-                    </td>
-                    <td>
-                        <th>(borrador)</th>
-                    </td>
-                    </tr>
+                    
+                    <td >(borrador)</td>
+                    
+                
+                    <td>(borrador)</td>
+                
+                    <td>(borrador)</td>
+                
+                    <td>(borrador)</td>
+                </tr>
                    
             </table>
-            <label>Total a pagar</label><input type="text" name="Total a pagar">
+            <label>Total a pagar</label><input type="text" name="Total a pagar" disabled="disabled">
             <br>
             <br>
-            <input type="submit" value="Enviar" class="boton">
+            <input type="submit" value="Enviar" class="boton-r">
             
-            <input type="reset" value="Crear nueva venta" class="boton">
+            <input type="reset" value="Crear nueva venta" class="boton-r">
           </div>
          
         
