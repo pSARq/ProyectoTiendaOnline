@@ -1,0 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #6167E8;
+}
+
+html{
+    height: 100%;
+}
+
+.contenedor-producto{
+    display: block;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0,0,0, 0.5);
+    border-radius: 5px;
+    margin: 50px auto;
+    width: 58%;
+    box-shadow: 2px 2px 5px 3px black;
+}
+
+.contenedor-producto h2{
+    display: block;
+    margin: 10px auto 50px;
+    padding: 0;
+    font-size: 30px;
+    color: #66CDF2;
+    text-align: center;
+}
+
+.contenedor-producto .elemento label{
+    color: #fff;
+}
+
+.contenedor-producto .elemento input, textarea, select{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 20px;
+    cursor: auto;
+}
+
+.contenedor-producto .elemento option{
+    background-color: #6167E8;
+}
+
+.contenedor-producto .contenedor-informacion{
+    display: flex;
+    justify-content: space-between;
+    margin: 4% auto;    
+}
+
+.contenedor-informacion .contenedor-producto1{
+    width: 48%;
+    height: auto;
+}
+
+.contenedor-informacion .contenedor-producto2{
+    width: 48%;
+    height: auto;
+}
+
+.contenedor-producto .btn-informacion-producto input[type="submit"]{
+    display: block;
+    background-color: #67DBA5;
+    font-size: 17px;
+    cursor: pointer;
+    border: none;
+    padding: 15px; 
+    text-align: center;
+    margin: auto;
+    
+}
+
+.btn-informacion-producto input:hover[type="submit"]{
+    background-color: #50a87f;
+}
+
+.btn-informacion-producto input:hover:active{
+    background: #25f895;
+}
+
+.fuente_roboto{
+    font-family: 'Roboto', sans-serif;/*Fuente importada*/
+}
+
+.fuente_roboto h2{
+    font-weight: bold;
+}
+
+div.contenedor-producto1 input[type=number]::-webkit-inner-spin-button, 
+div.contenedor-producto1 input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+div.contenedor-producto1 input[type=number] { -moz-appearance:textfield; }
