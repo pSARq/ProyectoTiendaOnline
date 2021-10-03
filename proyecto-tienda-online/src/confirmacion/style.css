@@ -17,14 +17,25 @@ table {
  }
  .body-r{
      background-color: #67DBA5;
-     font-family: 'Roboto', sans-serif;
+     font-family: 'Roboto';
  }
  .boton-r{
-     background-color: #6167E8;
+     background-color:  #6167E8;
      border-radius: 8px;
      padding-left: 20px;
      padding-right: 15px;
+     color: black;
+     
  }
+ .boton-r:hover{
+    background-color:#2930e6;
+    border-radius: 8px;
+    padding-left: 25px;
+    padding-right: 20px;
+    color: aliceblue;
+    
+}
+
  input{
      border-radius:8px ;
      background-color: #D9FCEC;
@@ -32,12 +43,22 @@ table {
  clr-fuente{
      color:#D9FCEC ;
  }
-.tabla-r{
-    margin: left 20%; ;
-    margin: right 20%; ;
-}
+
+
 .margen-r{
     margin-left: 5%;
     margin-right: 5%;
 
 }
+.caja-r{
+    background-color: #66cdf2;
+    border: 4px;
+    border-radius: 20px;
+    border-color:#4147f0;
+    border-style:groove;
+    
+}
+.caja-x{
+    transform-style: initial;
+}
+
