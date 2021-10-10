@@ -59,14 +59,13 @@ DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
-  `preciounitario` double NOT NULL,
-  `stock` int NOT NULL,
-  `estado` varchar(10) NOT NULL,
-  `descripcion` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idProducto` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  `valorUnitario` double DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`idProducto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +74,6 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'nnombre',1,2,'nnnnn','ssss'),(2,'nnombre',2,2,'nnnnn','ssss'),(3,'nnombre',2,2,'nnnnn','ssss'),(4,'nnombre',2,2,'nnnnn','ssss');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,4 +150,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-10 11:24:15
+-- Dump completed on 2021-10-10 15:21:39
