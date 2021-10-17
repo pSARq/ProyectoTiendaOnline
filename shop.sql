@@ -65,7 +65,7 @@ CREATE TABLE `productos` (
   `estado` varchar(20) DEFAULT NULL,
   `descripcion` text,
   PRIMARY KEY (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,'Leche',1000,'No disponible','Es una bolsa de leche'),(2,'Mani',3000,'Disponible','Es una bolsa de maní'),(3,'Manzana',2500,'Disponible','Es una fruta fresca y jugosa'),(4,'cebolla',3000,'No disponible','Es una cebolla'),(5,'Pera',400,'Disponible','Es una pera grande y fresca');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-10 15:21:39
+-- Dump completed on 2021-10-17 17:19:47
