@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginPage from './login/loginPage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import LoginPage from './login/loginPage';
 import UsuariosPage from './Usuarios/UsuariosPage';
 import NavbarComponet from './shared/components/navbar/navbarComponent';
 import Perfil from './Usuarios/Perfil';
@@ -14,10 +14,7 @@ function App() {
       <Router>
         <NavbarComponet />
         <Switch>
-          <Route path="/" exact><h1>Home</h1></Route>
-          <Route path="/login" exact><LoginPage /></Route>
-          <Route path="/usuarios" exact><UsuariosPage /></Route>
-          <Route path="/perfil" exact><Perfil /></Route>
+          <Route path="/" exact><USpage></USpage></Route>
         </Switch>
         <FooterComponent/>
 

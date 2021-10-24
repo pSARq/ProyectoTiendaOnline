@@ -8,62 +8,49 @@ let connection //define una variable para la conexión
 
 //configura el servidor para recibir daros en formato json
 app.use(express.json());// en link que mando el tutor esta como body.parte no se que es eso
+app.set('port', process.env.PORT||port)
 
-app.get("/get-product", function getProducto(request, response){
-response.send("Todo ok");
+app.get("/", (req,res)=>{
+    res.json("Backend MisionTic Shop")
 })
 
-app.post("/add-product",(request, response)=>{
-    const product=request.body;
-    console.log(product.nombre)
-    response.json(product)
+app.get("/get-lista",  async(request, response)=>{
+    const usuario=request.body
+    const [rows,filds]=await connection.execute (`select * from usuarios`)
+response.json({data:rows});
 })
 
-app.put("/update-product",(request, response)=>{
-    const product=request.body;
-    console.log(product.nombre)
-    response.json(product)
-})
-app.delete("/delete-product",(request, response)=>{
-    const product=request.body;
-    console.log(product.nombre)
-    response.json(product)
+app.get("/get-usuario",  async(request, response)=>{
+    const usuario=request.body
+    const identificador=usuario.identificador
+    const [rows, field]=await connection.execute (`select * from usuarios WHERE identificador=${identificador}`)
+response.json({data:rows});
 })
 
-
-app.put("/edit-valor",async(request,response)=>{
-    const producto=request.body;
-    const valor =producto.valor;
-    const identificador =producto.identificador;
-    await connection.execute(`update  productos set valor=${valor} WHERE Identificador =${identificador}`;
-    response.json(producto);
+app.put("/edit-rol",async(request,response)=>{
+    const usuario=request.body;
+    const rol =usuario.rol;
+    const identificador =usuario.identificador;
+    await connection.execute(`update usuarios set rol='${rol}' WHERE identificador=${identificador}`)
+response.json(usuario);
 })
 app.put("/edit-estado",async(request,response)=>{
-    const producto=request.body;
-    const estado =producto.estado;
-    const identificador =producto.identificador;
-    await connection.execute(`update  productos set estado=${estado} WHERE Identificador =${identificador}`)
-    response.json(producto);
-})
-app.put("/edit-descripcion",async(request,response)=>{
-    const producto=request.body;
-    const descripcion =producto.descripcion;
-    const identificador =producto.identificador;
-    await connection.execute(`update  productos set valor=${descripcion} WHERE Identificador =${identificador}`);
-    console.log(producto.descripcion);
-    response.json(producto);
+    const usuario=request.body;
+    const estado=usuario.estado;
+    const identificador =usuario.identificador;
+    await connection.execute(`update usuarios set estado= '${estado}' WHERE Identificador= ${identificador}`)
+response.json(usuario);
 })
 
 
-
-app.listen(port, async()=>{
-    connection = await mysql.createConnection({
+app.listen(app.get('port'), async()=>{
+    /*connection = await mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
         password : 'MYSQL',
         database : 'misticbd',
         promise : bluebird,
-      });
+      });*/
     console.log("servir running on port "+port)
 
 
