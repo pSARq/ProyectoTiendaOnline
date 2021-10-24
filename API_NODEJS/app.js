@@ -1,0 +1,74 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const mysql = require('mysql2/promise');
+const port = 3001
+const bluebierd = require('bluebird');
+let connection; //variable para almacenar la conexion a la DB
+// api creado por andersso hernandez//
+//configura el servisor para recivir formato json//
+app.use(express.json());
+app.use(cors({ origin: true }));
+/*rama main*/
+app.set('port', process.env.PORT || port)
+
+app.get("/get-Registrodeusuario", async (request, response) => {
+    const email = request.query.email;
+    const [rows, fields] = await connection.execute(`SELECT * FROM registro where email='${email}'`);
+    console.log(rows)
+        response.json( rows [0])
+  })
+
+ app.get("/get-listadeusuario", async (request, response) => {
+    const [rows, fields] = await connection.execute("SELECT * FROM registro");
+    response.json({ data: rows });
+}) 
+
+
+/*http://localhost:3001/get-registrodeusuario?email=hernader@gmail.com*/
+
+app.post("/add-registrodeusuario", async (req, res) => {
+    try {
+        const { nombre, apellido, email, cedula, contraseña, rol, estado } = req.body;
+        await connection.execute(`INSERT INTO registro (nombre,apellido,email,cedula,contraseña,rol,estado) VALUES('${nombre}','${apellido}', '${email}','${cedula}','${contraseña}','${rol}','${estado}')`);
+        res.json({ status: "ok" })
+    }
+    catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+})
+
+
+
+app.put("/update-registrodeusuario", (req, res) => {
+    const product = req.body;
+    console.log(product.nombre)
+    res.json(product);
+})
+app.delete("/delete-registrodeusuario", (req, res) => {
+    const product = req.body;
+    console.log(product.nombre)
+       
+ res.json(product);
+})
+
+app.listen(app.get('port'), async () => {
+    connection = await mysql.createConnection({
+        
+        /* host: 'localhost',
+        user: 'root',
+        password: 'Password',
+        database: 'shop', */
+
+        host:'sql10.freesqldatabase.com',
+        user: 'sql10446300',
+        password:'yjDX4GnX4T',
+        database:'sql10446300',
+        port: 3306,
+       
+        Promise: bluebierd,
+      
+    }); 
+    console.log("Server running on port " + app.get('port'));
+});
