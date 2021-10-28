@@ -12,22 +12,25 @@ app.use(cors({ origin: true }));
 /*rama main*/
 app.set('port', process.env.PORT || port)
 
-app.get("/get-Registrodeusuario", async (request, response) => {
+// inicio usuario
+// app.get("/get-Registrodeusuario", async (request, response) => {
+app.get("/get-buscarusuario", async (request, response) => {
     const email = request.query.email;
     const [rows, fields] = await connection.execute(`SELECT * FROM registro where email='${email}'`);
     console.log(rows)
-        response.json( rows [0])
-  })
+    response.json(rows[0])
+})
 
- app.get("/get-listadeusuario", async (request, response) => {
+app.get("/get-listadeusuario", async (request, response) => {
     const [rows, fields] = await connection.execute("SELECT * FROM registro");
     response.json({ data: rows });
-}) 
+})
 
 
 /*http://localhost:3001/get-registrodeusuario?email=hernader@gmail.com*/
 
 app.post("/add-registrodeusuario", async (req, res) => {
+
     try {
         const { nombre, apellido, email, cedula, contraseña, rol, estado } = req.body;
         await connection.execute(`INSERT INTO registro (nombre,apellido,email,cedula,contraseña,rol,estado) VALUES('${nombre}','${apellido}', '${email}','${cedula}','${contraseña}','${rol}','${estado}')`);
@@ -38,6 +41,80 @@ app.post("/add-registrodeusuario", async (req, res) => {
         res.json(error)
     }
 })
+// fin de usuario
+// --- inicio productos---//
+app.get("/get-listadeproductos", async (request, response) => {
+    const [rows, fields] = await connection.execute("SELECT * FROM productos");
+    console.log({ data: rows })
+    response.json({ data: rows });
+})
+app.post("/add-listadeproductos", async (req, res) => {
+    try {
+        const { nombre, preciounitario, stock, estado, descripcion } = req.body;
+        await connection.execute(`INSERT INTO productos (nombre, preciounitario, stock, estado,descripcion) VALUES('${nombre}',${preciounitario}, ${stock},'${estado}','${descripcion}')`);
+        res.json({ status: "ok" })
+    }
+    catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+})
+
+// --- fin productos---//
+//inicio santiago  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+app.get("/get-productos", async (request, response) => {
+    const [rows, fields] = await connection.execute("SELECT * FROM productos");
+    console.log({ data: rows });
+    response.json({ data: rows });
+});
+
+app.post("/add-producto", async (req, res) => {
+    try {
+        const { nombre, valorUnitario, estado, descripcion } = req.body;
+        await connection.execute(`INSERT INTO productos (nombre, preciounitario, stock, estado,descripcion) VALUES('${nombre}',${preciounitario}, ${stock},'${estado}','${descripcion}')`);
+        // await connection.execute(`INSERT INTO productos (nombre, valorUnitario, estado, descripcion) VALUES ('${nombre}', ${valorUnitario}, '${estado}', '${descripcion}')`);
+        res.json({ status: "ok" });
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
+});
+
+app.put("/update-producto", async (req, res) => {
+    try {
+        const idProducto = req.body.idProducto;
+        const { nombre, valorUnitario, estado, descripcion } = req.body;
+        await connection.execute(
+            `UPDATE productos SET nombre='${nombre}', valorUnitario=${valorUnitario}, estado='${estado}', descripcion='${descripcion}' WHERE idProducto = ${idProducto}`
+        );
+        res.json({ status: "ok" });
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
+});
+
+app.delete("/delete-producto", async (req, res) => {
+    try {
+        const idProducto = req.body.idProducto;
+        await connection.execute(`DELETE FROM productos WHERE idProducto=${idProducto}`);
+        res.json({ status: "ok" });
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
+});
+//fin santiago
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,26 +126,26 @@ app.put("/update-registrodeusuario", (req, res) => {
 app.delete("/delete-registrodeusuario", (req, res) => {
     const product = req.body;
     console.log(product.nombre)
-       
- res.json(product);
+
+    res.json(product);
 })
 
 app.listen(app.get('port'), async () => {
     connection = await mysql.createConnection({
-        
-        /* host: 'localhost',
+
+        host: 'localhost',
         user: 'root',
         password: 'Password',
-        database: 'shop', */
+        database: 'shop',
 
-        host:'sql10.freesqldatabase.com',
+        /* host:'sql10.freesqldatabase.com',
         user: 'sql10446300',
         password:'yjDX4GnX4T',
         database:'sql10446300',
-        port: 3306,
-       
+        port: 3306, */
+
         Promise: bluebierd,
-      
-    }); 
+
+    });
     console.log("Server running on port " + app.get('port'));
 });
