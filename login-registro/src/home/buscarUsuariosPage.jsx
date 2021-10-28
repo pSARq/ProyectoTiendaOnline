@@ -20,10 +20,11 @@ function InformeUsuario() {
   const [data, setdata] = useState({ buscar: '' });
 
   const getElementos = async () => {
-
+    
     try {
       //const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
-      const response = await fetch(`${apiBseUrl}/get-registrodeusuario?email=${user.email}`);
+      // const response = await fetch(`${apiBseUrl}/get-registrodeusuario?email=${user.email}`);
+      const response = await fetch(`${apiBseUrl}/get-buscarusuario?email=${user.email}`);
       //const response = await fetch(`http://localhost:3001/get-registrodeusuario`);
       const jsonResponse = await response.json();
       // console.log(jsonResponse)
@@ -50,7 +51,8 @@ function InformeUsuario() {
 
 
   const validateUserRole = async () => {
-    const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
+    // const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
+    const response = await fetch(`http://localhost:3001/get-buscarusuario?email=${user.email}`);
     const jsonResponse = await response.json();
     return jsonResponse;
   }

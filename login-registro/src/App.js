@@ -4,13 +4,22 @@ import React, { Fragment } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import LoginPage from './login/LoginPage';
-import RegisterPage from './register/RegisterPage';
 import NavbarComponent from './shared/components/navbar/NavbarComponent';
 import FooterComponent from './shared/components/footer/FooterComponent';
-import InformeUsuariosPage from './home/InformeUsuariosPage';
+
+import LoginPage from './login/LoginPage';
+
+import RegisterPage from './register/RegisterPage';
+import BuscarUsuariosPage from './home/buscarUsuariosPage';
 import ListadeUsuariosPage from './home/listadeUsuariosPage';
+
 import ForbidenComponent from './shared/components/forbiden/ForbidenComponent';
+
+import ProductosPage from './productos/ProductosPage';
+import BuscarProductosPage from './lista-productos/buscarProductosPage';
+import ListaProductos from './home/ListaProductos';
+
+
 
 //andersso hernandez//
 
@@ -26,11 +35,18 @@ function App() {
           
       <Switch>
         
-        <Route path="/register" exact><RegisterPage/></Route>
+        
         <Route path="/login" exact><LoginPage/></Route>
 
-        <Route path="/Registrodeusuarios" exact><InformeUsuariosPage/></Route>
+        <Route path="/register" exact><RegisterPage/></Route>
+        {/* <Route path="/Registrodeusuarios" exact><InformeUsuariosPage/></Route> */}
+        <Route path="/buscarusuarios" exact><BuscarUsuariosPage/></Route>
         <Route path="/listadeusuarios" exact><ListadeUsuariosPage/></Route>
+
+        <Route path="/Productos" exact><ProductosPage/> </Route>
+        <Route path="/BuscarProductos" exact><BuscarProductosPage/></Route>
+        <Route path="/listadeproductos" exact><ListaProductos/></Route>
+
           
         <Route path="/forbiden" exact><ForbidenComponent /></Route>
 
