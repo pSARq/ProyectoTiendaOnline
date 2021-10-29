@@ -43,6 +43,14 @@ app.post("/add-registrodeusuario", async (req, res) => {
 })
 // fin de usuario
 // --- inicio productos---//
+
+
+
+
+
+
+
+
 app.get("/get-listadeproductos", async (request, response) => {
     const [rows, fields] = await connection.execute("SELECT * FROM productos");
     console.log({ data: rows })
@@ -59,27 +67,7 @@ app.post("/add-listadeproductos", async (req, res) => {
         res.json(error)
     }
 })
-
-// --- fin productos---//
-//inicio santiago  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-app.get("/get-productos", async (request, response) => {
-    const [rows, fields] = await connection.execute("SELECT * FROM productos");
-    console.log({ data: rows });
-    response.json({ data: rows });
-});
-
-app.post("/add-producto", async (req, res) => {
-    try {
-        const { nombre, valorUnitario, estado, descripcion } = req.body;
-        await connection.execute(`INSERT INTO productos (nombre, preciounitario, stock, estado,descripcion) VALUES('${nombre}',${preciounitario}, ${stock},'${estado}','${descripcion}')`);
-        // await connection.execute(`INSERT INTO productos (nombre, valorUnitario, estado, descripcion) VALUES ('${nombre}', ${valorUnitario}, '${estado}', '${descripcion}')`);
-        res.json({ status: "ok" });
-    } catch (error) {
-        console.log(error);
-        res.json(error);
-    }
-});
+//inicio santiago  esto no se esta usando
 
 app.put("/update-producto", async (req, res) => {
     try {
@@ -106,6 +94,9 @@ app.delete("/delete-producto", async (req, res) => {
     }
 });
 //fin santiago
+
+
+// --- fin productos---//
 
 
 
