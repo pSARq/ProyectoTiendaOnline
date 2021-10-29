@@ -9,14 +9,14 @@ import FooterComponent from './shared/components/footer/FooterComponent';
 
 import LoginPage from './login/LoginPage';
 
-import RegisterPage from './register/RegisterPage';
+import RegisterPage from './usuarios/RegisterPage';
 import BuscarUsuariosPage from './home/buscarUsuariosPage';
 import ListadeUsuariosPage from './home/listadeUsuariosPage';
 
 import ForbidenComponent from './shared/components/forbiden/ForbidenComponent';
 
 import ProductosPage from './productos/ProductosPage';
-import BuscarProductosPage from './lista-productos/buscarProductosPage';
+import BuscarProductosPage from './home/buscarProductosPage';
 import ListaProductos from './home/ListaProductos';
 
 

@@ -15,11 +15,11 @@ function InformeUsuario() {
   const [validUser, setValidUser] = useState(false);
   const { user, isAuthenticated } = useAuth0();
   const { loginWithRedirect } = useAuth0();
-
-
   const [data, setdata] = useState({ buscar: '' });
+  
+  
 
-  const getElementos = async () => {
+ /* const getElementos = async () => {
     
     try {
       //const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
@@ -48,8 +48,44 @@ function InformeUsuario() {
       console.log(error)
     }
   }
+*/
+
+/* --inicio de funcion buscar-- */
 
 
+const getBuscar = async () => {
+    
+  try {
+    //const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
+    // const response = await fetch(`${apiBseUrl}/get-registrodeusuario?email=${user.email}`);
+    const response = await fetch(`${apiBseUrl}/get-buscarusuario?email=${user.email}`);
+    //const response = await fetch(`http://localhost:3001/get-registrodeusuario`);
+    const jsonResponse = await response.json();
+    const responseElementos = jsonResponse;
+
+    const listElementos = (
+      <tr>
+        <th scope="row">{responseElementos.id}</th>
+        <td>{responseElementos.nombre}</td>
+        <td>{responseElementos.apellido}</td>
+        <td>{responseElementos.email}</td>
+        <td>{responseElementos.cedula}</td>
+        <td>{responseElementos.contraseña}</td>
+        <td>{responseElementos.rol}</td>
+        <td>{responseElementos.estado}</td>
+      </tr>);
+
+
+    setElementos([listElementos])
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
+
+
+/* --fin de funcion buscar-- */
+ 
   const validateUserRole = async () => {
     // const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
     const response = await fetch(`http://localhost:3001/get-buscarusuario?email=${user.email}`);
@@ -57,6 +93,7 @@ function InformeUsuario() {
     return jsonResponse;
   }
 
+  
   const grantAccess = async () => {
     let userData;
     if (isAuthenticated) {
@@ -96,6 +133,7 @@ function InformeUsuario() {
   useEffect(() => {
     grantAccess();
     //getElementos();
+    //la linea anterior hace que getElemento  se ejecute de forma automatica
 
   }, [isAuthenticated, validUser]);
   //if(grantAccess()){
@@ -114,20 +152,19 @@ function InformeUsuario() {
               <div class="form-outline">
                 <input type="search" 
                 class="form-control" 
-                name="buscar" 
+                name="buscar"
+                id="busacar" 
                 onChange={(dataname) => setdata(dataname.target.value)}/>
+
               </div>
               <span class="input-group-btn">
-
-
-                <button class="btn btn-primary" type="button" onClick={getElementos}>Buscar</button>
-
+                <button class="btn btn-primary" type="button" onClick={getBuscar}>Buscar</button>
               </span>
-              
+              <h3>{Date.buscar}</h3>
               {/* </div> */}
             </div>
           </div>
-
+         
 
           {/* <div class="input-group">
             <div class="form-outline">
@@ -141,13 +178,6 @@ function InformeUsuario() {
             </span>
             
           </div> */}
-
-
-
-
-
-
-
 
           <table class="table">
             <thead>
@@ -166,6 +196,14 @@ function InformeUsuario() {
               {elementos}
             </tbody>
           </table>
+
+
+
+          const jsonResponse = document.getElementById('datos');
+   console.log(jsonResponse)
+
+
+
 
         </div> : <ForbidenComponent />}
       <h1>{data.buscar}</h1>

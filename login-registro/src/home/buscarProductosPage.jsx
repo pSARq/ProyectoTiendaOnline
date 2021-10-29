@@ -3,20 +3,21 @@ import "./EstiloListaProductos.css";
 
 function ListaProductos() {
   const [productos, setProductos] = useState([]);
-  
+
   const mensaje = (evento) => {
-    
+
     console.log("hola");
   }
 
   const getProductos = async () => {
     try {
-      const response = await fetch("http://localhost:3001/get-productos");
+      // const response = await fetch("http://localhost:3001/get-productos");
+      const response = await fetch("http://localhost:3001/get-listadeproductos");
       const jsonResponse = await response.json();
       const responseProductos = jsonResponse.data;
       const listProductos = responseProductos.map((producto) => (
         <div class="contenedor-lista-informacion">
-          <a href={"ListaProductos#"+producto.idProducto + producto.nombre}>{producto.idProducto} - {producto.nombre}</a>
+          <a href={"ListaProductos#" + producto.idProducto + producto.nombre}>{producto.idProducto} - {producto.nombre}</a>
           <div class="contenedor-lista-submenu" id={producto.idProducto + producto.nombre}>
             <div class="contenedor-lista-interno-productos">
               <div class="contenedor-lista-producto1">
@@ -88,13 +89,43 @@ function ListaProductos() {
 
   return (
     <Fragment>
+
+
       <div class="contenedor-lista-producto">
-        <h2>Lista de productos</h2>
+        {/* <h2>Lista de productos</h2> */}
+        <div><p> BUSACAR PRODUCTO</p></div>
 
         <div class="contenedor-lista-buscar">
-          <i class="bi bi-search"></i>
+        {/*   <i class="bi bi-search"></i>
           <input type="search" class="buscar-producto" />
-          <span class="btn-buscar">Buscar</span>
+          <span class="btn-buscar">Buscar</span> */}
+          {/* --------boton buscar ----------- */}
+
+
+          <div class="row">
+            {/* <div class="col-lg-6"> */}
+            <div class="input-group">
+              <div class="form-outline">
+                <input type="search"
+                  class="form-control"
+                  name="buscar"
+                /* onChange={(dataname) => setdata(dataname.target.value)} */
+                />
+              </div>
+              <span class="input-group-btn">
+
+
+                <button class="btn btn-primary" type="button" /*onClick={getElementos}*/>Buscar</button>
+
+              </span>
+              {/* --------------fin boton buscar -------------------- */}
+              {/* </div> */}
+            </div>
+          </div>
+
+
+
+
         </div>
 
         {productos}

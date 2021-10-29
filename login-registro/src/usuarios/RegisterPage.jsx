@@ -31,6 +31,7 @@ const RegisterPage = () => {
 
 
         document.getElementById("newForm").reset();
+        alert("registro realizado con exito")
     }
 
     /* const cancelCourse = () => { 

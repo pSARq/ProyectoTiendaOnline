@@ -17,8 +17,7 @@ const ProductosPage = () => {
             "stock": stock,
             "estado": state,
             "descripcion": description,
-            /* "rol": "",
-            "estado": "pendiente" */
+            
         };
         const response = await fetch(`${apiBseUrl}/add-listadeproductos`, {
             method: 'POST',
