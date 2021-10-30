@@ -13,7 +13,7 @@ app.use(cors({ origin: true }));
 app.set('port', process.env.PORT || port)
 
 // inicio usuario
-// app.get("/get-Registrodeusuario", async (request, response) => {
+
 app.get("/get-buscarusuario", async (request, response) => {
     const email = request.query.email;
     const [rows, fields] = await connection.execute(`SELECT * FROM registro where email='${email}'`);
@@ -40,16 +40,36 @@ app.post("/add-registrodeusuario", async (req, res) => {
         console.log(error);
         res.json(error)
     }
+});
+
+/* app.put("/update-editarusuario", (req, res) => {
+    try {
+        const idProducto = req.body.idProducto;
+        const { nombre,apellido,email,cedula,contraseña,rol,estado } = req.body;
+        await connection.execute(`UPDATE productos SET nombre='${nombre}', apellido='${apellido}', email='${email}', cedula='${cedula}',contraseña='${contraseña}',rol='${rol}',estado='${estado}' WHERE idProducto = ${idProducto}`);
+        //await connection.execute(`INSERT INTO registro (nombre,apellido,email,cedula,contraseña,rol,estado) VALUES('${nombre}','${apellido}', '${email}','${cedula}','${contraseña}','${rol}','${estado}')`);
+        
+        res.json({ status: "ok" })
+    } 
+    catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+}); */
+
+app.delete("/delete-eliminarusuario", (req, res) => {
+    const product = req.body;
+    console.log(product.nombre)
+
+    res.json(product);
 })
+
+
+
 // fin de usuario
+
+
 // --- inicio productos---//
-
-
-
-
-
-
-
 
 app.get("/get-listadeproductos", async (request, response) => {
     const [rows, fields] = await connection.execute("SELECT * FROM productos");
@@ -98,28 +118,6 @@ app.delete("/delete-producto", async (req, res) => {
 
 // --- fin productos---//
 
-
-
-
-
-
-
-
-
-
-
-
-app.put("/update-registrodeusuario", (req, res) => {
-    const product = req.body;
-    console.log(product.nombre)
-    res.json(product);
-})
-app.delete("/delete-registrodeusuario", (req, res) => {
-    const product = req.body;
-    console.log(product.nombre)
-
-    res.json(product);
-})
 
 app.listen(app.get('port'), async () => {
     connection = await mysql.createConnection({

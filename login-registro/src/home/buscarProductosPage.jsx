@@ -93,7 +93,7 @@ function ListaProductos() {
 
       <div class="contenedor-lista-producto">
         {/* <h2>Lista de productos</h2> */}
-        <div><p> BUSACAR PRODUCTO</p></div>
+        <div><p> BUSCAR PRODUCTO</p></div>
 
         <div class="contenedor-lista-buscar">
         {/*   <i class="bi bi-search"></i>

@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router';
 import ForbidenComponent from '../shared/components/forbiden/ForbidenComponent';
-
+import apiBseUrl from '../shared/utils/Api';
 
 function InformeUsuario() {
   const [elementos, setElementos] = useState([]);
@@ -12,13 +12,14 @@ function InformeUsuario() {
   const getElementos = async () => {
   
     try {
-    const response = await fetch("http://localhost:3001/get-listadeusuario");
+    //const response = await fetch("http://localhost:3001/get-buscarusuario2");
+    const response = await fetch(`${apiBseUrl}/get-buscarusuario2?email=${user.email}`);
       
       const jsonResponse = await response.json();
       //console.log(jsonResponse)
       const responseElementos = jsonResponse.data; /*para traer toda la tabla*/
       
-      /*para traer toda la tabla*/ 
+      /*para traer/*para traer toda la tabla*/ 
        const listElementos = responseElementos.map((elementos) =>
         <tr>
           <th scope="row">{elementos.id}</th>
@@ -95,7 +96,35 @@ function InformeUsuario() {
     <div className="container">
       {validUser ? <div>
 
-        <div><p> INFORME USUARIO</p></div>
+        <div><p> BUSACAR USUARIO</p></div>
+          {/*--------------------------------------------------------------------------*/}
+
+          <div class="row">
+            {/* <div class="col-lg-6"> */}
+            <div class="input-group">
+              <div class="form-outline">
+                <input type="search" 
+                class="form-control" 
+                name="buscar"
+                id="busacar" 
+                /* onChange={(dataname) => setdata(dataname.target.value)} *//>
+
+              </div>
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" onClick={getElementos}>Buscar</button>
+              </span>
+              <h3>{Date.buscar}</h3>
+              {/* </div> */}
+            </div>
+          </div>
+         
+
+
+
+
+
+
+
         <table class="table">
           <thead>
             <tr>

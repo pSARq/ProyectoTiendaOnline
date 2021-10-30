@@ -9,6 +9,8 @@ const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [IDnumber, setIDnumber] = useState(0);
     const [password, setPassword] = useState("");
+    const [rol, setRol] = useState("");
+    const [state, setState] = useState("");
 
     const enviardatos = async () => {
         const elementos = {
@@ -17,11 +19,11 @@ const RegisterPage = () => {
             "email": email,
             "cedula": IDnumber,
             "contraseña": password,
-            "rol": "",
-            "estado": "pendiente"
+            "rol": rol,
+            "estado": state
         };
-        const response = await fetch(`${apiBseUrl}/add-registrodeusuario`, {
-            method: 'POST',
+        const response = await fetch(`${apiBseUrl}/update-editarusuario`, {
+            method: 'put',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -31,16 +33,8 @@ const RegisterPage = () => {
 
 
         document.getElementById("newForm").reset();
-        alert("registro realizado con exito")
+        alert("Edicion realizada con exito")
     }
-
-    /* const cancelCourse = () => { 
-        document.getElementById("create-course-form").reset();
-      }
-
- */
-
-
 
     return (
         <Fragment >
@@ -48,7 +42,7 @@ const RegisterPage = () => {
 
                 <img src={logo} alt="" />
 
-                <h5>Formulario Registo</h5>
+                <h5>Edicion de Registo</h5>
                 <form id="newForm">
                     <div class="form-floating mb-3">
                         <input type="text"
@@ -83,19 +77,30 @@ const RegisterPage = () => {
                         <label for="floatingPassword">Password</label>
                     </div>
 
-                    <p> <a href="#">De acuerdo con terminos y condiciones</a></p>
-                    <div>
-                        <button type="button" class="btn btn-primary" onClick={enviardatos} >Registrarse</button>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingRol" placeholder="Rol"
+                            onChange={(datarol) => setRol(datarol.target.value)} />
+                        <label for="floatingPassword">Rol</label>
                     </div>
-                    {/* <div>
-                    <button id="img" type="button" class="btn btn-primary" >Registrarse con google</button>
-                </div> */}
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingState" placeholder="Estado"
+                            onChange={(datastate) => setState(datastate.target.value)} />
+                        <label for="floatingState">Estado</label>
+                    </div>
 
-                    <p><a href="#">¿Ya tengo una cuenta?</a></p>
+
+
+
+                    <div>
+
+                        <button type="button" class="btn btn-primary" onClick={enviardatos} >GUARDAR CAMBIOS</button>
+                    </div>
+
                 </form>
 
             </section>
-        </Fragment>
+        </Fragment >
     )
 }
 export default RegisterPage;

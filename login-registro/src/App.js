@@ -12,6 +12,7 @@ import LoginPage from './login/LoginPage';
 import RegisterPage from './usuarios/RegisterPage';
 import BuscarUsuariosPage from './home/buscarUsuariosPage';
 import ListadeUsuariosPage from './home/listadeUsuariosPage';
+import EditarusuarioPage from './usuarios/EditarusuarioPage';
 
 import ForbidenComponent from './shared/components/forbiden/ForbidenComponent';
 
@@ -39,9 +40,10 @@ function App() {
         <Route path="/login" exact><LoginPage/></Route>
 
         <Route path="/register" exact><RegisterPage/></Route>
-        {/* <Route path="/Registrodeusuarios" exact><InformeUsuariosPage/></Route> */}
         <Route path="/buscarusuarios" exact><BuscarUsuariosPage/></Route>
         <Route path="/listadeusuarios" exact><ListadeUsuariosPage/></Route>
+        <Route path="/editaruarios" exact><EditarusuarioPage/></Route> 
+        
 
         <Route path="/Productos" exact><ProductosPage/> </Route>
         <Route path="/BuscarProductos" exact><BuscarProductosPage/></Route>

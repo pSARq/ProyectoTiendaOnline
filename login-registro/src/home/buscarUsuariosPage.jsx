@@ -17,9 +17,9 @@ function InformeUsuario() {
   const { loginWithRedirect } = useAuth0();
   const [data, setdata] = useState({ buscar: '' });
   
-  
 
- /* const getElementos = async () => {
+
+ const getElementos = async () => {
     
     try {
       //const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
@@ -48,20 +48,18 @@ function InformeUsuario() {
       console.log(error)
     }
   }
-*/
-
-/* --inicio de funcion buscar-- */
 
 
-const getBuscar = async () => {
+/* --inicio de funcion buscar-- 
+
+const getElementos = async () => {
     
   try {
-    //const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
-    // const response = await fetch(`${apiBseUrl}/get-registrodeusuario?email=${user.email}`);
-    const response = await fetch(`${apiBseUrl}/get-buscarusuario?email=${user.email}`);
-    //const response = await fetch(`http://localhost:3001/get-registrodeusuario`);
-    const jsonResponse = await response.json();
-    const responseElementos = jsonResponse;
+   // const response = await fetch(`${apiBseUrl}/get-buscarusuario?email=${user.email}`);
+   const response = await fetch(`${apiBseUrl}/get-buscarusuario`);
+     
+   const jsonResponse = await response.json();
+    const responseElementos = jsonResponse.Data;
 
     const listElementos = (
       <tr>
@@ -74,14 +72,13 @@ const getBuscar = async () => {
         <td>{responseElementos.rol}</td>
         <td>{responseElementos.estado}</td>
       </tr>);
-
-
     setElementos([listElementos])
   }
   catch (error) {
     console.log(error)
   }
 }
+
 
 
 /* --fin de funcion buscar-- */
@@ -154,11 +151,11 @@ const getBuscar = async () => {
                 class="form-control" 
                 name="buscar"
                 id="busacar" 
-                onChange={(dataname) => setdata(dataname.target.value)}/>
+                /* onChange={(dataname) => setdata(dataname.target.value)} *//>
 
               </div>
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" onClick={getBuscar}>Buscar</button>
+                <button class="btn btn-primary" type="button" onClick={getElementos}>Buscar</button>
               </span>
               <h3>{Date.buscar}</h3>
               {/* </div> */}
@@ -199,9 +196,9 @@ const getBuscar = async () => {
 
 
 
-          const jsonResponse = document.getElementById('datos');
+          {/* const jsonResponse = document.getElementById('datos');
    console.log(jsonResponse)
-
+ */}
 
 
 

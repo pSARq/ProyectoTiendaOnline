@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>detalle de ventas</title>
+
+	<link rel="shortcut icon" href=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1J5Vs_fcIlE5gXjFBieu3jnVdZPp4JZDS4A&usqp=CAU/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--<link rel="stylesheet" href="css/buscarventasStyles.css">-->
+
+	<link href="style.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+
+<body id="tablee">
+
+
+
+	<section class="form-login">
+		<!--<img src="assets/img/logo.png"> -->
+		<h5>Detalle de venta</h5>
+
+		<label for="ID">ID: </label>
+    <!--<input class="controls" type="text"  disabled="disabled" name="ID"  value="" >-->
+    <input class="controls" type="text" value="" >
+                        
+    <label for="Nombre">Nombre: </label>
+    <input class="controls" type="text" name="Nombre" value="" >
+    <label for="Cedula">Cedula: </label>
+    <input class="controls" type="text" name="Cedula" value="" >
+    <label for="Fecha">Fecha: </label>
+    <input class="controls" type= "" name="Fecha" value="" >
+        
+    <select name="Estado" class="controls">
+      <option selectd="" value="">Estado</option>
+      <option value="En proceso">En proceso</option>
+      <option value="Cancelada">Cancelada</option>
+      <option value="Entregada">Entregada</option>
+  </select>
+      
+  
+<table border="1" class="span" id="tabla1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th> Descripcion </th>
+          <th>Magnitud</th>
+          <th>Cantidad</th>
+          <th>Valor</th>
+          <th>Subtotal</th>
+        </tr>
+         <tr>
+          <!--<th><input class="controls" type="number"  disabled="disabled" name="ID"  value="" ></th>-->
+         <th><input class="controls" type="text" name="ID"  id="ID"value="" ></th>
+
+                                        
+          <th><input class="controls" type="text" name="Descripcion"  id="Descripcion" value="" ></th>
+
+          <th><input class="controls" type="text" name="Magnitud" id="Magnitud"value="" ></th>
+          
+          <th><input class="controls" type="number" name="cantidad" id="Cantidad"value="" ></th>
+
+          <th><input class="controls" type="number" name="valor" id="Valor"  onkeyup="producto()" value="" ></th>
+
+          <th><input class="controls"  disabled="disabled" type="number" name="subtotal" id="Subtotal"value="" ></th>
+
+          <th><input type="button" class="btn btn-success"  id="adicionar" onclick="genera_tabla()" value="+" /></th>
+         </tr>
+   </thead>
+    
+    <tbody>
+ 
+  <!--<tr >
+   <div class="row" id="canciones">
+<td class="row" id="canciones"></td>
+<td class="row" id="ID"></td>
+<td class="row" id="Descripcion"></td>
+<td class="row" id="Magnitud"></td>
+<td class="row" id="Cantidad"></td>
+<td class="row" id="Valor"></td>
+<td class="row" id="Subtotal"></td>
+      </tr>-->
+
+
+
+
+
+      </tbody>  
+     </table >
+     <label for="Total">Total: </label>
+     
+    <input class="controls" type="" name="total" value="" >
+    
+    
+    <!--codigo del Primer boton guardar-->
+    <input  class="buttons" type="submit" name=""  onClick ="mostrarMensaje()"  value="Guardar">
+    
+     <script>
+      function mostrarMensaje(){
+        alert("los cambios se realizaron con exito");
+        location.href='Registeroventa.html';
+      }
+     </script> 
+ 
+    <!--codigo del segundo boton guardar-->
+    <button class="buttons" >Guardar</button>
+    <script>
+      const boton = document.querySelector
+      ('button');
+      boton.addEventListener('click',function (){
+       alert("los cambios se realizaron con exito");
+      });
+      boton.addEventListener('click',function (){
+       location.href='Registeroventa.html';
+      });
+     </script>
+    
+  </section>
+   
+  <script src="scripts/main4.js"></script>
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+scrip
+---------------------------------------------------------------------------------------
+
+function producto(){
+const input1 = document.getElementById('Cantidad').value.toLowerCase();
+const input2 = document.getElementById('Valor').value.toLowerCase();
+var valor3 =input1*input2;
+console.log(valor3)
+var textoCelda = document.createTextNode(valor3);
+document.getElementById("Subtotal").value =valor3;
+
+
+
+
+
+}
+a=0
+function genera_tabla() {
+        
+      var tblBody = document.querySelector("tbody");
+      var hilera = document.createElement("tr");
+              
+      var ID = document.createElement("td");
+      var valor = document.getElementById("ID").value;
+      var textoCelda = document.createTextNode(valor);
+      ID.appendChild(textoCelda);
+      hilera.appendChild(ID);
+      tblBody.appendChild(hilera);
+
+      var Descripcion = document.createElement("td");
+      var valor= document.getElementById("Descripcion").value;
+      var textoCelda = document.createTextNode(valor);
+      Descripcion.appendChild(textoCelda);
+      hilera.appendChild(Descripcion);
+      tblBody.appendChild(hilera);
+
+      var Magnitud = document.createElement("td");
+      var valor= document.getElementById("Magnitud").value;
+      var textoCelda = document.createTextNode(valor);
+      Magnitud.appendChild(textoCelda);
+      hilera.appendChild(Magnitud);
+      tblBody.appendChild(hilera);
+  
+      var Cantidad = document.createElement("td");
+      var valor= document.getElementById("Cantidad").value;
+      var textoCelda = document.createTextNode(valor);
+      Cantidad.appendChild(textoCelda);
+      hilera.appendChild(Cantidad);
+      tblBody.appendChild(hilera);
+               
+      var Valor = document.createElement("td");
+      var valor= document.getElementById("Valor").value;
+      var textoCelda = document.createTextNode(valor);
+      Valor.appendChild(textoCelda);
+      hilera.appendChild(Valor);
+      tblBody.appendChild(hilera);
+
+      var Subtotal = document.createElement("td");
+      var valor= document.getElementById("Subtotal").value;
+      var textoCelda = document.createTextNode(valor);
+      Subtotal.appendChild(textoCelda);
+      hilera.appendChild(Subtotal);
+      tblBody.appendChild(hilera);
+
+ var eliminar = document.createElement("td");
+ eliminar.innerHTML = '<input type="button" class="btn btn-success"  id="restar" value="-" />';
+hilera.appendChild(eliminar);
+tblBody.appendChild(hilera);
+
+  /*var eliminar = document.createElement("td");
+ eliminar.innerHTML = '<div style="clear:both"class="cancion_'+a+' col-md-offset-1 col-md-6"><input class="form-control" name="cancion_'+a+'" type="text" value='-'/></div>';
+hilera.appendChild(eliminar);
+tblBody.appendChild(hilera);*/
+      
+      
+
+
+}
+

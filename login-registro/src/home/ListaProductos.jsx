@@ -31,7 +31,7 @@ function ListaProductos() {
     useEffect(() => {
         getElementos();
 
-    }, []);
+    }, []); 
 
     return (
         <div className="container">
@@ -52,7 +52,6 @@ function ListaProductos() {
                     {elemento}
                 </tbody>
             </table>
-
         </div>
     )
 }
