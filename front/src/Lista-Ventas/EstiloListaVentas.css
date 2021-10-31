@@ -167,3 +167,13 @@ i {
 .descripcion {
   color: black;
 }
+
+.subtitulos{
+  /* background-color: darkseagreen; */
+  padding: 5px;
+  margin: 0px 5px 25px 0px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 100, 0, 0.616);
+  color: white;
+}

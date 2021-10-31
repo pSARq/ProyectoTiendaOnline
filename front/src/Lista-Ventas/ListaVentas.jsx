@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./EstiloListaVentas.css";
 import "../Productoss/ProductosEstilo.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import {FaSearch} from "react-icons/fa";  
+import { FaSearch } from "react-icons/fa";
 
 function ListaVentas() {
   const [mostrarM, setMostrarM] = useState(false);
@@ -11,22 +11,40 @@ function ListaVentas() {
   const [ventas, setVentas] = useState([]);
   const [ventana, setVentana] = useState();
   const [eliminar, setEliminar] = useState();
-  let arregloVentas = []; 
+  let arregloVentas = [];
   let ventaModal = [];
 
   const actualizarVenta = (evento) => {
-    const idVenta = document.getElementById("codigo").value;
-    const nombre = document.getElementById("nombre").value;
-    const valorUnitario = document.getElementById("valor").value;
-    const estado = document.getElementById("estado").value;
-    const descripcion = document.getElementById("descripcion").value;
+    const id = document.getElementById("codigo").value;
+    const fecha = document.getElementById("fecha").value;
+    const id_producto = document.getElementById("codigo_producto").value;
+    const n_producto = document.getElementById("n_producto").value;
+    const precio_unitario = document.getElementById("precio_unitario").value;
+    const cantidad = document.getElementById("cantidad").value;
+    const total = document.getElementById("total").value;
+    const id_comprador = document.getElementById("codigo_comprador").value;
+    const n_comprador = document.getElementById("n_comprador").value;
+    const a_comprador = document.getElementById("a_comprador").value;
+    const id_vendedor = document.getElementById("codigo_vendedor").value;
+    const n_vendedor = document.getElementById("n_vendedor").value;
+    const a_vendedor = document.getElementById("a_vendedor").value;
     const venta = {
-      idVenta: idVenta,
-      nombre: nombre,
-      valorUnitario: valorUnitario,
-      estado: estado,
-      descripcion: descripcion,
+      id: id,
+      id_producto: id_producto,
+      id_comprador: id_comprador,
+      id_vendedor: id_vendedor,
+      fecha: fecha,
+      n_producto: n_producto,
+      precio_unitario: precio_unitario,
+      cantidad: cantidad,
+      total: total,
+      n_comprador: n_comprador,
+      a_comprador: a_comprador,
+      n_vendedor: n_vendedor,
+      a_vendedor: a_vendedor
     };
+
+    console.log("Esta es la venta",venta);
 
     fetch("http://localhost:3001/update-venta", {
       method: "PUT",
@@ -39,7 +57,7 @@ function ListaVentas() {
     });
 
     evento.preventDefault();
-    window.location.href = ("");
+    window.location.href = "";
   };
 
   const abrirModal = (venta) => {
@@ -69,22 +87,56 @@ function ListaVentas() {
       const responseVentas = jsonResponse.data;
       const listVentas = responseVentas.map((venta) => (
         <div className="contenedor-lista-informacion">
-          <a href={"ListaVentas#" + venta.idVenta + venta.nombre}>
-            {venta.idVenta} - {venta.nombre}
+          <a href={"ListaVentas#" + venta.id + venta.n_comprador}>
+            {venta.id} - {venta.n_comprador}
           </a>
           <div
             className="contenedor-lista-submenu"
-            id={venta.idVenta + venta.nombre}
+            id={venta.id + venta.n_comprador}
           >
-            <div className="contenedor-lista-interno-venta">
+            <div className="contenedor-lista-interno-ventas">
               <div className="contenedor-lista-venta1">
+
+              <label className="subtitulos">PRODUCTO</label>
+                
                 <div className="elemento">
-                  <label>Código</label>
+                  <label>Código de la venta</label>
                   <input
                     id="id"
                     type="number"
-                    name="IdVenta"
-                    value={venta.idVenta}
+                    name="id"
+                    value={venta.id}
+                    readOnly
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Id del producto</label>
+                  <input
+                    id="id_producto"
+                    type="number"
+                    name="id_producto"
+                    value={venta.id_producto}
+                    readOnly
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Fecha</label>
+                  <input
+                    type="text"
+                    name="fecha"
+                    value={venta.fecha}
+                    readOnly
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Nombre producto</label>
+                  <input
+                    type="text"
+                    name="n_producto"
+                    value={venta.n_producto}
                     readOnly
                   />
                 </div>
@@ -93,44 +145,97 @@ function ListaVentas() {
                   <label>Valor por unidad</label>
                   <input
                     type="number"
-                    name="precio"
-                    value={venta.valorUnitario}
+                    name="precio_unitario"
+                    value={venta.precio_unitario}
                     readOnly
                   />
                 </div>
 
                 <div className="elemento">
-                  <label>Descripción</label>
-                  <textarea
-                    className="descripcion"
-                    name="descripción"
-                    value={venta.descripcion}
+                  <label>Cantidad</label>
+                  <input
+                    type="number"
+                    name="cantidad"
+                    value={venta.cantidad}
                     readOnly
-                  ></textarea>
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Total a pagar</label>
+                  <input
+                    type="text"
+                    name="total"
+                    value={venta.total}
+                    readOnly
+                  />
                 </div>
               </div>
               <div className="contenedor-lista-venta2">
+                <label className="subtitulos">CLIENTE</label>
+
                 <div className="elemento">
-                  <label>Nombre</label>
+                  <label>Id del cliente</label>
                   <input
-                    type="text"
-                    name="Nombre"
-                    value={venta.nombre}
+                    id="id_comprador"
+                    type="number"
+                    name="id_comprador"
+                    value={venta.id_comprador}
                     readOnly
                   />
                 </div>
 
                 <div className="elemento">
-                  <label>Estado</label>
-                  <select
-                    name="estado"
-                    className="estado"
-                    value={venta.estado}
+                  <label>Nombre cliente</label>
+                  <input
+                    type="text"
+                    name="n_comprador"
+                    value={venta.n_comprador}
                     readOnly
-                  >
-                    <option value="Disponible">Disponible</option>
-                    <option value="No disponible">No disponible</option>
-                  </select>
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Apellido cliente</label>
+                  <input
+                    type="text"
+                    name="a_comprador"
+                    value={venta.a_comprador}
+                    readOnly
+                  />
+                </div>
+
+                <label className="subtitulos">VENDEDOR</label>
+
+                <div className="elemento">
+                  <label>Id del vendedor</label>
+                  <input
+                    id="id_vendedor"
+                    type="number"
+                    name="id_vendedor"
+                    value={venta.id_vendedor}
+                    readOnly
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Nombre vendedor</label>
+                  <input
+                    type="text"
+                    name="Nombre"
+                    value={venta.n_vendedor}
+                    readOnly
+                  />
+                </div>
+
+                <div className="elemento">
+                  <label>Apellido vendedor</label>
+                  <input
+                    type="text"
+                    name="a_vendedor"
+                    value={venta.a_vendedor}
+                    readOnly
+                  />
                 </div>
               </div>
             </div>
@@ -157,59 +262,111 @@ function ListaVentas() {
 
   const getVentana = () => {
     setVentana(
-      <div className="container contenedor-venta">
+      <div className="container contenedor-producto">
         <h2>
-          Venta # {ventaModal.idVenta} - {ventaModal.nombre}
+          Venta # {ventaModal.id} - {ventaModal.n_comprador}
         </h2>
         <form name="forma" method="GET" onSubmit={actualizarVenta}>
           <div className="contenedor-informacion">
             <div className="contenedor-venta1">
+              <label className="subtitulos">PRODUCTO</label>
               <div className="elemento">
-                <label>Código</label>
+                <label>Código de la venta</label>
                 <input
-                  type="number"
-                  name="IdVenta"
                   id="codigo"
-                  value={ventaModal.idVenta}
+                  type="number"
+                  name="id"
+                  value={ventaModal.id}
                   readOnly
-                  disabled
                 />
               </div>
 
               <div className="elemento">
-                <label>Valor por unidad</label>
-                <input type="number" name="precio" id="valor" required="true" />
+                  <label>Id del producto</label>
+                  <input
+                    id="codigo_producto"
+                    type="number"
+                    name="id_producto"
+                  />
+                </div>
+
+              <div className="elemento">
+                  <label>Fecha</label>
+                  <input
+                    type="date"
+                    name="fecha"
+                    id="fecha"
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre producto</label>
+                <input type="text" name="n_producto" id="n_producto"/>
               </div>
 
               <div className="elemento">
-                <label>Descripción</label>
-                <textarea
-                  name="descripción"
-                  id="descripcion"
-                  required="true"
-                ></textarea>
+                <label>Valor por unidad</label>
+                <input type="number" name="precio_unitario" id="precio_unitario"/>
+              </div>
+
+              <div className="elemento">
+                <label>Cantidad</label>
+                <input type="number" name="cantidad" id="cantidad"/>
+              </div>
+
+              <div className="elemento">
+                <label>Total a pagar</label>
+                <input type="number" name="total" id="total"/>
               </div>
             </div>
+            <div className="contenedor-lista-venta2">
+              <label className="subtitulos">CLIENTE</label>
 
-            <div className="contenedor-venta2">
               <div className="elemento">
-                <label>Nombre</label>
-                <input id="nombre" type="text" name="Nombre" required="true" />
+                  <label>Id del cliente</label>
+                  <input
+                    id="codigo_comprador"
+                    type="number"
+                    name="id_comprador"
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre cliente</label>
+                <input type="text" name="n_comprador" id="n_comprador"/>
               </div>
 
               <div className="elemento">
-                <label>Estado</label>
-                <select name="estado" id="estado">
-                  <option value="Disponible">Disponible</option>
-                  <option value="No disponible">No disponible</option>
-                </select>
+                <label>Apellido cliente</label>
+                <input type="text" name="a_comprador" id="a_comprador"/>
+              </div>
+
+              <label className="subtitulos">VENDEDOR</label>
+
+              <div className="elemento">
+                  <label>Id del vendedor</label>
+                  <input
+                    id="codigo_vendedor"
+                    type="number"
+                    name="id_vendedor"
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre vendedor</label>
+                <input type="text" name="n_vendedor" id="n_vendedor"/>
+              </div>
+
+              <div className="elemento">
+                <label>Apellido vendedor</label>
+                <input type="text" name="a_vendedor" id="a_vendedor"/>
               </div>
             </div>
           </div>
 
-          <div className="btn-informacion-venta">
+          <div className="btn-informacion-producto">
             <input
-              onClick={() => alert("Venta actualizado con exito")}
+              onClick={() => alert("Venta actualizada con exito")}
               type="submit"
               value="Guardar cambios"
             />
@@ -220,11 +377,11 @@ function ListaVentas() {
   };
 
   const eliminarVenta = (evento) => {
-    const idVenta = document.getElementById("codigo").value;
+    const id = document.getElementById("id").value;
     const venta = {
-      idVenta: idVenta,
+      id: id,
     };
-    console.log(idVenta);
+    console.log(id);
 
     fetch("http://localhost:3001/delete-venta", {
       method: "DELETE",
@@ -237,59 +394,116 @@ function ListaVentas() {
     });
 
     evento.preventDefault();
-    window.location.href = ("");
+    window.location.href = "";
   };
 
   const getEliminar = (venta) => {
     setEliminar(
-      <div className="container contenedor-venta">
+      <div className="container contenedor-producto">
         <h2>
-          Venta # {ventaModal.idVenta} - {ventaModal.nombre}
+          Venta # {ventaModal.id} - {ventaModal.n_comprador}
         </h2>
         <form name="forma" method="GET" onSubmit={eliminarVenta}>
           <div className="contenedor-informacion">
             <div className="contenedor-venta1">
+              <label className="subtitulos">PRODUCTO</label>
               <div className="elemento">
-                <label>Código</label>
+                <label>Código de la venta</label>
                 <input
+                  id="id"
                   type="number"
-                  name="IdVenta"
-                  id="codigo"
-                  value={ventaModal.idVenta}
+                  name="id"
+                  value={ventaModal.id}
                   readOnly
-                  disabled
                 />
               </div>
 
               <div className="elemento">
-                <label>Valor por unidad</label>
-                <input type="number" name="precio" id="valor" required="true" value={ventaModal.valorUnitario} readOnly />
+                  <label>Id del producto</label>
+                  <input
+                    id="id_producto"
+                    type="number"
+                    name="id_producto"
+                    value={venta.id_producto}
+                    readOnly
+                  />
+                </div>
+
+              <div className="elemento">
+                  <label>Fecha</label>
+                  <input
+                    type="text"
+                    name="fecha"
+                    value={venta.fecha}
+                    readOnly
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre producto</label>
+                <input type="text" name="n_producto" value={ventaModal.n_producto} readOnly />
               </div>
 
               <div className="elemento">
-                <label>Descripción</label>
-                <textarea
-                  name="descripción"
-                  id="descripcion"
-                  required="true"
-                  value={ventaModal.descripcion}
-                  readOnly
-                ></textarea>
+                <label>Valor por unidad</label>
+                <input type="number" name="precio_unitario" value={ventaModal.precio_unitario} readOnly/>
+              </div>
+
+              <div className="elemento">
+                <label>Cantidad</label>
+                <input type="number" name="cantidad" value={ventaModal.cantidad} readOnly />
+              </div>
+
+              <div className="elemento">
+                <label>Total a pagar</label>
+                <input type="text" name="total" value={ventaModal.total} readOnly/>
               </div>
             </div>
+            <div className="contenedor-lista-venta2">
+              <label className="subtitulos">CLIENTE</label>
 
-            <div className="contenedor-venta2">
               <div className="elemento">
-                <label>Nombre</label>
-                <input id="nombre" type="text" name="Nombre" required="true" value={ventaModal.nombre} readOnly/>
+                  <label>Id del cliente</label>
+                  <input
+                    id="id_comprador"
+                    type="number"
+                    name="id_comprador"
+                    value={venta.id_comprador}
+                    readOnly
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre cliente</label>
+                <input type="text" name="n_comprador" value={ventaModal.n_comprador} readOnly/>
               </div>
 
               <div className="elemento">
-                <label>Estado</label>
-                <select name="estado" id="estado" value={ventaModal.estado} readOnly>
-                  <option value="Disponible">Disponible</option>
-                  <option value="No disponible">No disponible</option>
-                </select>
+                <label>Apellido cliente</label>
+                <input type="text" name="a_comprador" value={ventaModal.a_comprador} readOnly/>
+              </div>
+
+              <label className="subtitulos">VENDEDOR</label>
+
+              <div className="elemento">
+                  <label>Id del vendedor</label>
+                  <input
+                    id="id_vendedor"
+                    type="number"
+                    name="id_vendedor"
+                    value={venta.id_vendedor}
+                    readOnly
+                  />
+                </div>
+
+              <div className="elemento">
+                <label>Nombre vendedor</label>
+                <input type="text" name="n_vendedor" value={ventaModal.n_vendedor} readOnly/>
+              </div>
+
+              <div className="elemento">
+                <label>Apellido vendedor</label>
+                <input type="text" name="a_vendedor" value={ventaModal.a_vendedor} readOnly/>
               </div>
             </div>
           </div>
@@ -306,21 +520,24 @@ function ListaVentas() {
     );
   };
 
-  const filtrar = async () =>{
+  const filtrar = async () => {
     const terminoBusqueda = document.getElementById("buscar").value;
     let exite = false;
-    
+
     const response = await fetch("http://localhost:3001/get-ventas");
-      const jsonResponse = await response.json();
-      arregloVentas = jsonResponse.data;
-    
+    const jsonResponse = await response.json();
+    arregloVentas = jsonResponse.data;
+
     for (const venta of arregloVentas) {
-      if (venta.idVenta == terminoBusqueda || venta.nombre.toLowerCase() == terminoBusqueda.toString().toLowerCase()) {
-        document.location.href = "#"+venta.idVenta+venta.nombre;
+      if (
+        venta.id == terminoBusqueda ||
+        venta.n_comprador.toLowerCase() == terminoBusqueda.toString().toLowerCase()
+      ) {
+        document.location.href = "#" + venta.id + venta.n_comprador;
         exite = true;
       }
     }
-    if(!exite){
+    if (!exite) {
       alert("Venta no exite");
     }
   };
@@ -335,9 +552,18 @@ function ListaVentas() {
         <h2>Lista de ventas</h2>
 
         <div className="contenedor-lista-buscar">
-          <i><FaSearch/></i>
-          <input type="search" className="buscar-venta" id="buscar" placeholder="Buscar venta" />
-          <span className="btn-buscar" onClick={filtrar}>Buscar</span>
+          <i>
+            <FaSearch />
+          </i>
+          <input
+            type="search"
+            className="buscar-venta"
+            id="buscar"
+            placeholder="Buscar venta"
+          />
+          <span className="btn-buscar" onClick={filtrar}>
+            Buscar
+          </span>
         </div>
 
         {ventas}
@@ -354,15 +580,10 @@ function ListaVentas() {
           </Modal>
 
           <Modal className="modal-lg" isOpen={mostrarE}>
-            <ModalHeader>
-              ¿Está seguro que desea eliminar el venta?
-            </ModalHeader>
+            <ModalHeader>¿Está seguro que desea eliminar la venta?</ModalHeader>
             <ModalBody>{eliminar}</ModalBody>
             <ModalFooter>
-              <Button
-                color="primary"
-                onClick={abrirEliminacion}
-              >
+              <Button color="primary" onClick={abrirEliminacion}>
                 Volver
               </Button>
             </ModalFooter>

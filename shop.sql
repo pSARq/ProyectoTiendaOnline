@@ -74,7 +74,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Leche',1000,'No disponible','Es una bolsa de leche'),(2,'Mani',3000,'Disponible','Es una bolsa de maní'),(3,'Manzana',2500,'Disponible','Es una fruta fresca y jugosa'),(4,'cebolla',3000,'No disponible','Es una cebolla'),(5,'Pera',400,'Disponible','Es una pera grande y fresca');
+INSERT INTO `productos` VALUES (1,'Leche',1000,'No disponible','Es una bolsa de leche'),(2,'Mani',3000,'Disponible','Es una bolsa de maní'),(3,'Manzana',2500,'Disponible','Es una fruta fresca y jugosa'),(4,'cebolla',3000,'No disponible','Es una cebolla'),(5,'Papaya',1000,'Disponible','Una jugosa papaya');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,20 +117,20 @@ DROP TABLE IF EXISTS `ventas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ventas` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `fecha` date DEFAULT NULL,
-  `id_producto` varchar(100) NOT NULL,
+  `fecha` varchar(10) DEFAULT NULL,
+  `id_producto` bigint NOT NULL,
   `n_producto` varchar(50) NOT NULL,
   `precio_unitario` double NOT NULL,
   `cantidad` double NOT NULL,
   `total` double NOT NULL,
-  `id_comprador` varchar(100) NOT NULL,
+  `id_comprador` bigint NOT NULL,
   `n_comprador` varchar(50) NOT NULL,
   `a_comprador` varchar(50) NOT NULL,
   `id_vendedor` varchar(100) NOT NULL,
   `n_vendedor` varchar(50) NOT NULL,
   `a_vendedor` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,6 +139,7 @@ CREATE TABLE `ventas` (
 
 LOCK TABLES `ventas` WRITE;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
+INSERT INTO `ventas` VALUES (3,'2021-10-01',1,'Yuca',5000,1,5000,1,'Manuel','Rosario','1','Luisa','Muñoz'),(4,'2021-10-02',2,'Pera',2500,1,2500,2,'Karen','Gomez','2','Deison','Hurtado');
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -151,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-17 17:19:47
+-- Dump completed on 2021-10-31 14:27:19

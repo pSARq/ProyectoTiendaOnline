@@ -82,10 +82,10 @@ app.post("/hacer-pedido", async (req, res) => {
 
 app.put("/update-venta", async (req, res) => {
   try {
-    const idProducto = req.body.idProducto;
-    const { nombre, valorUnitario, estado, descripcion } = req.body;
+    const id = req.body.id;
+    const { fecha, id_producto, n_producto, precio_unitario, cantidad, total, n_comprador, a_comprador, n_vendedor, a_vendedor, id_comprador, id_vendedor} = req.body;
     await connection.execute(
-      `UPDATE ventas SET `
+      `UPDATE ventas SET fecha='${fecha}', id_producto=${id_producto}, n_producto='${n_producto}', precio_unitario=${precio_unitario}, cantidad=${cantidad}, total=${total}, n_comprador='${n_comprador}', a_comprador='${a_comprador}', n_vendedor='${n_vendedor}', a_vendedor='${a_vendedor}', id_comprador=${id_comprador}, id_vendedor=${id_vendedor}, id_producto=${id_producto} WHERE id=${id}`
     );
     res.json({ status: "ok" });
   } catch (error) {
@@ -96,8 +96,8 @@ app.put("/update-venta", async (req, res) => {
 
 app.delete("/delete-venta", async (req, res) => {
   try {
-    const idVenta = req.body.idProducto;
-    await connection.execute(`DELETE FROM ventas WHERE id=${idVenta}`);
+    const id = req.body.id;
+    await connection.execute(`DELETE FROM ventas WHERE id=${id}`);
     res.json({ status: "ok" });
   } catch (error) {
       console.log(error);
