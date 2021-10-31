@@ -21,10 +21,28 @@ app.get("/get-buscarusuario", async (request, response) => {
     response.json(rows[0])
 })
 
+
+/* app.get("/get-buscarusuario", async (request, response) => {
+    const email = request.query.email;
+    const [rows, fields] = await connection.execute(`SELECT * FROM registro where email='${email}'`);
+    console.log(rows)
+    response.json(rows[0])
+})
+ */
+
+
+
+
 app.get("/get-listadeusuario", async (request, response) => {
     const [rows, fields] = await connection.execute("SELECT * FROM registro");
     response.json({ data: rows });
 })
+
+/* 
+app.get("/get-listadeusuario", async (request, response) => {
+    const [rows, fields] = await connection.execute("SELECT * FROM registro");
+    response.json({ data: rows });
+}) */
 
 
 /*http://localhost:3001/get-registrodeusuario?email=hernader@gmail.com*/
