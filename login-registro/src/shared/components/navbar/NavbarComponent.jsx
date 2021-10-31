@@ -10,7 +10,7 @@ function NavbarComponent(props) {
     const { logout } = useAuth0();
     const { user, isAuthenticated } = useAuth0();
 
-    
+
     // let title = props.title;
     return (
 
@@ -19,22 +19,25 @@ function NavbarComponent(props) {
                 <img src={logo} alt="" />
             </div>
             <ul>
-                
+
                 {isAuthenticated ? null : <button onClick={() => loginWithRedirect()}>Log In</button>}
                 {isAuthenticated ? <button onClick={() => logout({ returnTo: window.location.origin })}>Log out</button> : null}
-                
+
                 <Link to="/register" > <button> Crear una cuenta </button></Link>
                 {/* <Link to="/Registrodeusuarios" > <button> buscar usuarios</button></Link> */}
                 <Link to="/buscarusuarios" > <button> buscar usuarios</button></Link>
                 <Link to="/Listadeusuarios" > <button> Lista de usuarios</button></Link>
-                 <Link to="/editaruarios" > <button> Editar usuario</button></Link>
+                <Link to="/editaruarios" > <button> Editar usuario</button></Link>
 
 
                 <Link to="/Productos" > <button> Productos</button></Link>
                 <Link to="/BuscarProductos" > <button> buscar productos</button></Link>
                 <Link to="/listadeproductos" > <button> Lista de productos</button></Link>
-                
-        
+
+
+                {/* <Link to="/Ventas"  > <button> Vender</button></Link> */}
+
+
 
 
                 <form class="d-flex">

@@ -20,6 +20,8 @@ import ProductosPage from './productos/ProductosPage';
 import BuscarProductosPage from './home/buscarProductosPage';
 import ListaProductos from './home/ListaProductos';
 
+//import VentasPage from './ventas/VentasPage';
+
 
 
 //andersso hernandez//
@@ -49,7 +51,13 @@ function App() {
         <Route path="/BuscarProductos" exact><BuscarProductosPage/></Route>
         <Route path="/listadeproductos" exact><ListaProductos/></Route>
 
-          
+        {/* <Route path="/Ventas" exact><VentasPage/> </Route> */}
+        
+
+
+
+
+
         <Route path="/forbiden" exact><ForbidenComponent /></Route>
 
 

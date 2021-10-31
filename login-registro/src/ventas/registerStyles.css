@@ -8,7 +8,7 @@
     font-family: 'Times New Roman', Times, serif;
     
   }
-  
+  /** @jsx React.DOM */
   .form-registro {
     width: 400px;
     height: auto;

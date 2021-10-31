@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router';
 import ForbidenComponent from '../shared/components/forbiden/ForbidenComponent';
+import { Link } from 'react-router-dom';
 
 
 function InformeUsuario() {
@@ -29,6 +30,8 @@ function InformeUsuario() {
           <td>{elementos.contraseña}</td>
           <td>{elementos.rol}</td>
           <td>{elementos.estado}</td>
+          <td><Link to="/editaruarios" ><input type="button" class="btn btn-success"  value="EDITAR"/></Link></td>
+          
         </tr>
       ); 
  
@@ -90,6 +93,10 @@ function InformeUsuario() {
 
   }, [isAuthenticated, validUser]);
   //if(grantAccess()){
+
+    function genera_tabla() {
+
+    }
   return (
 
     <div className="container">
@@ -107,6 +114,7 @@ function InformeUsuario() {
               <th scope="col">CONTRASEÑA</th>
               <th scope="col">ROL</th>
               <th scope="col">ESTADO</th>
+              <th scope="col">ACCION</th>
             </tr>
           </thead>
           <tbody>

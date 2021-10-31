@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 import apiBseUrl from '../shared/utils/Api';
 /*rema main*/
 
-
-
-
 function InformeUsuario() {
   
   const [elementos, setElementos] = useState([]);
@@ -17,8 +14,6 @@ function InformeUsuario() {
   const { loginWithRedirect } = useAuth0();
   const [data, setdata] = useState({ buscar: '' });
   
-
-
  const getElementos = async () => {
     
     try {
@@ -49,18 +44,17 @@ function InformeUsuario() {
     }
   }
 
+// -----funcion buscar
 
-/* --inicio de funcion buscar-- 
-
-const getElementos = async () => {
+const getElementos1 = async () => {
     
   try {
-   // const response = await fetch(`${apiBseUrl}/get-buscarusuario?email=${user.email}`);
-   const response = await fetch(`${apiBseUrl}/get-buscarusuario`);
-     
-   const jsonResponse = await response.json();
-    const responseElementos = jsonResponse.Data;
-
+    const elemento = document.querySelector("buscar");
+    const response = await fetch(`${apiBseUrl}/get-buscarusuario?elemento=${elemento}`);
+    //const response = await fetch(`http://localhost:3001/get-registrodeusuario`);
+    const jsonResponse = await response.json();
+    // console.log(jsonResponse)
+    const responseElementos = jsonResponse;
     const listElementos = (
       <tr>
         <th scope="row">{responseElementos.id}</th>
@@ -72,6 +66,8 @@ const getElementos = async () => {
         <td>{responseElementos.rol}</td>
         <td>{responseElementos.estado}</td>
       </tr>);
+
+
     setElementos([listElementos])
   }
   catch (error) {
@@ -79,10 +75,8 @@ const getElementos = async () => {
   }
 }
 
+//-----fin funcion buscar
 
-
-/* --fin de funcion buscar-- */
- 
   const validateUserRole = async () => {
     // const response = await fetch(`http://localhost:3001/get-registrodeusuario?email=${user.email}`);
     const response = await fetch(`http://localhost:3001/get-buscarusuario?email=${user.email}`);
@@ -90,7 +84,6 @@ const getElementos = async () => {
     return jsonResponse;
   }
 
-  
   const grantAccess = async () => {
     let userData;
     if (isAuthenticated) {
@@ -150,12 +143,12 @@ const getElementos = async () => {
                 <input type="search" 
                 class="form-control" 
                 name="buscar"
-                id="busacar" 
+                id="buscar" 
                 /* onChange={(dataname) => setdata(dataname.target.value)} *//>
 
               </div>
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" onClick={getElementos}>Buscar</button>
+                <button class="btn btn-primary" type="button" onClick={getElementos1}>Buscar</button>
               </span>
               <h3>{Date.buscar}</h3>
               {/* </div> */}
@@ -187,6 +180,7 @@ const getElementos = async () => {
                 <th scope="col">CONTRASEÑA</th>
                 <th scope="col">ROL</th>
                 <th scope="col">ESTADO</th>
+                <th scope="col">EDITAR</th>
               </tr>
             </thead>
             <tbody>
@@ -203,7 +197,7 @@ const getElementos = async () => {
 
 
         </div> : <ForbidenComponent />}
-      <h1>{data.buscar}</h1>
+      {/* <h1>{data.buscar}</h1> */}
     </div>
 
 

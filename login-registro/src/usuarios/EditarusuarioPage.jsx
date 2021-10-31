@@ -45,10 +45,13 @@ const RegisterPage = () => {
                 <h5>Edicion de Registo</h5>
                 <form id="newForm">
                     <div class="form-floating mb-3">
-                        <input type="text"
-                            class="form-control"
-                            id="floatingName"
-                            placeholder="First name"
+                        <input type="text" class="form-control" id="floatingName" placeholder="Id usuario"
+                            disabled="disabled" /* onChange={(dataname) => setName(dataname.target.value)} */ />
+                        <label for="floatingFName">Id ususario</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingName"                             placeholder="First name"
                             onChange={(dataname) => setName(dataname.target.value)} />
                         <label for="floatingFName">First name</label>
                     </div>
@@ -71,11 +74,11 @@ const RegisterPage = () => {
                         <label for="floatingID">ID number</label>
                     </div>
 
-                    <div class="form-floating mb-3">
+                    {/* <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                             onChange={(datapassword) => setPassword(datapassword.target.value)} />
                         <label for="floatingPassword">Password</label>
-                    </div>
+                    </div> */}
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingRol" placeholder="Rol"

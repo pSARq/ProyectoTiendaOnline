@@ -1,0 +1,236 @@
+import React, { Fragment, useState } from 'react';
+import './registerStyles.css';
+import logo from '../assets/img/logo.png';
+import apiBseUrl from '../shared/utils/Api';
+
+ const VentasPage = () => {
+    const [name, setName] = useState("");
+    const [Lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [IDnumber, setIDnumber] = useState(0);
+    const [password, setPassword] = useState("");
+
+    const enviardatos = async () => {
+        const elementos = {
+            "nombre": name,
+            "apellido": Lastname,
+            "email": email,
+            "cedula": IDnumber,
+            "contraseña": password,
+            "rol": "",
+            "estado": "pendiente"
+        };
+        const response = await fetch(`${apiBseUrl}/add-registrodeusuario`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(elementos),
+        });
+        const jsonResponse = await response.json();
+
+
+        document.getElementById("newForm").reset();
+        alert("registro realizado con exito")
+    }
+
+//  -------------------------------------------------------------------------------
+// aqui meto los script
+//-----------------------------------------------------------------------------------
+{/* <script src="js/reactjs/main.js" type = "text/babel">
+function general (){
+    producto(),
+    Calcular()
+  }
+  
+  
+  function producto(){
+  input1 = document.getElementById('Cantidad').value.toLowerCase(),
+  input2 = document.getElementById('Valor').value.toLowerCase(),
+  valor3 =input1*input2,
+//   var textoCelda = document.createTextNode(valor3);
+  document.getElementById("Subtotal").value =valor3
+  
+  }
+    
+  function genera_tabla() {
+          
+         tblBody = document.querySelector("tbody"),
+        hilera = document.createElement("tr"),
+        ID = document.createElement("td"),
+        valor = document.getElementById("ID").value,
+        textoCelda = document.createTextNode(valor),
+        ID.appendChild(textoCelda),
+        hilera.appendChild(ID),
+        tblBody.appendChild(hilera),
+        Descripcion = document.createElement("td"),
+        valor= document.getElementById("Descripcion").value,
+        textoCelda = document.createTextNode(valor),
+        Descripcion.appendChild(textoCelda),
+        hilera.appendChild(Descripcion),
+        tblBody.appendChild(hilera),
+  
+        Magnitud = document.createElement("td"),
+        valor= document.getElementById("Magnitud").value,
+        textoCelda = document.createTextNode(valor),
+        Magnitud.appendChild(textoCelda),
+        hilera.appendChild(Magnitud),
+        tblBody.appendChild(hilera),
+    
+        Cantidad = document.createElement("td"),
+        valor= document.getElementById("Cantidad").value,
+        textoCelda = document.createTextNode(valor),
+        Cantidad.appendChild(textoCelda),
+        hilera.appendChild(Cantidad),
+        tblBody.appendChild(hilera),
+                 
+        Valor = document.createElement("td"),
+        valor= document.getElementById("Valor").value,
+        textoCelda = document.createTextNode(valor),
+        Valor.appendChild(textoCelda),
+        hilera.appendChild(Valor),
+        tblBody.appendChild(hilera),
+  
+        Subtotal = document.createElement("td"),
+        Subtotal.setAttribute('id','totalitem[]'),
+        valor= document.getElementById("Subtotal").value,
+        textoCelda = document.createTextNode(valor),
+        Subtotal.appendChild(textoCelda),
+        hilera.appendChild(Subtotal),
+        tblBody.appendChild(hilera),
+  
+   eliminar = document.createElement("td"),
+   eliminar.setAttribute('style','text-align: center;'),
+   eliminar.innerHTML = '<input type="button" class="btn btn-success"  value="-"/>',
+   hilera.appendChild(eliminar)
+  
+  }
+  
+  function Calcular(ele) {
+              totalitem = 0 ,
+              tr = ele.parentNode.parentNode,
+              nodes = tr.childNodes,
+              console.log(nodes.length),
+              for (var x = 0; x<nodes.length; x++) {
+                  
+                 
+             if (nodes[x].firstChild.id == 'totalitem[]') {
+                      anterior = nodes[x].firstChild.value,
+                      totalitem = parseFloat((totalitem + nodes[x].firstChild).value,10),
+                      nodes[x].firstChild.value = totalitem,
+                  }
+              }
+              var total = document.getElementById("total");
+              if (total.innerHTML == 'NaN') {
+                  total.innerHTML = 0;
+                  
+              }
+              total.innerHTML = parseFloat(total.innerHTML)+totalitem -anterior ;    
+          }
+  
+  </script>
+ */}
+// ---------------------------------------------------------------------------------------
+    return (
+        <Fragment >
+            <section className="form-registro">
+                <h5>Detalle de venta</h5>
+
+                <label for="ID">ID: </label>
+                {/* <input class="controls" type="text" disabled="disabled" name="ID" value="" /> */}
+                    <input class="form-control" type="text" value="" />
+
+                        <label for="Nombre">Nombre: </label>
+                        <input class="form-control" type="text" name="Nombre" value=""/ >
+
+                            <label for="Cedula">Cedula: </label>
+                            <input class="form-control" type="text" name="Cedula" value="" />
+                                <label for="Fecha">Fecha: </label>
+                                <input class="form-control" type="" name="Fecha" value="" />
+
+                                    <select name="Estado" class="form-control">
+                                        <option selectd="" value="">Estado</option>
+                                        <option value="En proceso">En proceso</option>
+                                        <option value="Cancelada">Cancelada</option>
+                                        <option value="Entregada">Entregada</option>
+                                    </select>
+
+
+                                    <table border="1" class="span" id="tabla1">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;">ID</th>
+                                                <th style="text-align: center;"> Descripcion </th>
+                                                <th style="text-align: center;">Magnitud</th>
+                                                <th style="text-align: center;">Cantidad</th>
+                                                <th style="text-align: center;">Valor</th>
+                                                <th style="text-align: center;">Subtotal</th>
+                                            </tr>
+                                            <tr>
+                                                {/* <th><input class="controls" type="number" disabled="disabled" name="ID" value="" /></th> */}
+                                                <th><input class="form-control" type="text" name="ID" id="ID" value=""/></th>
+
+                                                <th><input class="form-control" type="text" name="Descripcion" id="Descripcion" value="" /></th>
+
+                                                <th><input class="form-control" type="text" name="Magnitud" id="Magnitud" value="" /></th>
+
+                                                <th><input class="form-control" type="number" name="cantidad" id="Cantidad" value=""/></th>
+
+                                                <th><input class="form-control" type="number" name="valor" id="Valor" onkeyup="general()" value="" /></th>
+
+                                                <th><input class="form-control" disabled="disabled" type="number" name="subtotal" id="Subtotal" value="" /></th>
+
+                                                <th><input type="button" class="btn btn-success" id="adicionar" onclick="genera_tabla()" value="+" /></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            {/* <tr >
+                                                <div class="row" id="canciones">
+                                                <td class ="row" id="canciones"></td>
+                                                <td class ="row" id="ID"></td>
+                                                <td class ="row" id="Descripcion"></td>
+                                                <td class ="row" id="Magnitud"></td>
+                                                <td class ="row" id="Cantidad"></td>
+                                                <td class ="row" id="Valor"></td>
+                                                <td class ="row" id="Subtotal"></td>
+                                            </tr> */}
+                                        </tbody>
+                                    </table >
+                                    <label for="Total">Total: </label>
+
+                                    {/* <input class="form-control" type="" name="total" value="" > */}
+
+                                        <td><span id="total">0</span> <input class="form-control" type="hidden" id="total_final" name="total_final" value="0" readonly /></td>
+
+
+                                        {/* codigo del Primer boton guardar */}
+                                        <input class="buttons" type="submit" name="" onClick="mostrarMensaje()" value="Guardar"/>
+
+                                            <script>
+                                                function mostrarMensaje(){
+                                                    alert("los cambios se realizaron con exito")
+                                                }
+                                                location.href='Registeroventa.html';
+                                                 
+                                            </script>
+
+                                            {/* codigo del segundo boton guardar */}
+                                            {/* <button class="buttons" >Guardar</button>
+
+                                            <script>
+                                                const boton = document.querySelector
+                                                ('button');
+                                                boton.addEventListener('click',function (){
+                                                    alert("los cambios se realizaron con exito")
+                                                 });
+                                                boton.addEventListener('click',function (){
+                                                    location.href = 'Registeroventa.html'
+                                                });
+                                            </script> */}
+                                        </section>
+                                    </Fragment>
+                                    )
+                                    }
+                                    export default VentasPage;
