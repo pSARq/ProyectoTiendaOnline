@@ -91,10 +91,10 @@ app.post("/add-listadeproductos", async (req, res) => {
 
 app.put("/update-producto", async (req, res) => {
     try {
-        const idProducto = req.body.idProducto;
-        const { nombre, valorUnitario, estado, descripcion } = req.body;
+        const id = req.body.id;
+        const { nombre, preciounitario, estado, descripcion } = req.body;
         await connection.execute(
-            `UPDATE productos SET nombre='${nombre}', valorUnitario=${valorUnitario}, estado='${estado}', descripcion='${descripcion}' WHERE idProducto = ${idProducto}`
+            `UPDATE productos SET nombre='${nombre}', preciounitario=${preciounitario}, estado='${estado}', descripcion='${descripcion}' WHERE id = ${id}`
         );
         res.json({ status: "ok" });
     } catch (error) {
@@ -105,14 +105,14 @@ app.put("/update-producto", async (req, res) => {
 
 app.delete("/delete-producto", async (req, res) => {
     try {
-        const idProducto = req.body.idProducto;
-        await connection.execute(`DELETE FROM productos WHERE idProducto=${idProducto}`);
-        res.json({ status: "ok" });
+      const id = req.body.id;
+      await connection.execute(`DELETE FROM productos WHERE id=${id}`);
+      res.json({ status: "ok" });
     } catch (error) {
         console.log(error);
-        res.json(error);
+      res.json(error);
     }
-});
+  });
 //fin santiago
 
 

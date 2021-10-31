@@ -6,7 +6,7 @@ import apiBseUrl from '../shared/utils/Api';
 const ProductosPage = () => {
     const [name, setName] = useState("");
     const [unitprice, setUnitprice] = useState(0);
-    const [stock, setStock] = useState("");
+    // const [stock, setStock] = useState("");
     const [state, setState] = useState("");
     const [description, setDescription] = useState("");
 
@@ -14,7 +14,7 @@ const ProductosPage = () => {
         const elementos = {
             "nombre": name,
             "preciounitario": unitprice,
-            "stock": stock,
+            // "stock": stock,
             "estado": state,
             "descripcion": description,
             
@@ -47,7 +47,7 @@ const ProductosPage = () => {
                             id="floatingName"
                             placeholder="First name"
                             onChange={(dataname) => setName(dataname.target.value)} />
-                        <label for="floatingFName">Nonbre del producto</label>
+                        <label for="floatingFName">Nombre del producto</label>
                     </div>
 
                     <div class="form-floating mb-3">
@@ -55,13 +55,13 @@ const ProductosPage = () => {
                             onChange={(dataunitprice) => setUnitprice(dataunitprice.target.value)} />
                         <label for="floatingLName">Precio Unitario</label>
                     </div>
-
+{/* 
 
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="floatingID" placeholder="stock"
                             onChange={(datastock) => setStock(datastock.target.value)} />
                         <label for="floatingID">Inventario</label>
-                    </div>
+                    </div> */}
 
 
                     <div class="form-floating">

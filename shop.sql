@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `shop2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `shop2`;
 -- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
--- Host: localhost    Database: shop
+-- Host: localhost    Database: shop2
 -- ------------------------------------------------------
 -- Server version	8.0.26
 
@@ -60,7 +62,6 @@ CREATE TABLE `productos` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `preciounitario` double NOT NULL,
-  `stock` int NOT NULL,
   `estado` varchar(10) NOT NULL,
   `descripcion` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -73,7 +74,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (5,'pan ',1000,20,'pendiente','pan genérico '),(6,'pandero',1000,20,'disponible','pan de yuca'),(7,'pan de bono',1000,20,'disponible','pan elalaborado con fruto dle pan'),(8,'enyucado',1000,20,'Disponible','torta de yuca'),(9,'masa pan',1000,20,'Disponible','wdefrg tyuytu efrtyuu'),(10,'deli pan',1000,20,'Disponible','pan con arequipe'),(11,'migapan',1022,12,'Disponible','son los retazos de sobran de cortar el pan '),(12,'migapan',1234,123,'Disponible','sobas del los cortes del pan');
+INSERT INTO `productos` VALUES (6,'pandero',1000,'disponible','pan de yuca'),(7,'pan de bono',1000,'disponible','pan elalaborado con fruto dle pan'),(8,'enyucado',1000,'Disponible','torta de yuca'),(9,'masa pan',1000,'Disponible','wdefrg tyuytu efrtyuu'),(10,'prueba',1,'Disponible','a');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-29 21:52:06
+-- Dump completed on 2021-10-31 16:38:39
