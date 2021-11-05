@@ -27,6 +27,7 @@ app.get("/get-usuario", async(request, response) => {
   const mail=usuario.mail
   const[rows,fields]=await connection.execute(`select*from usuarios where mail="${mail}"`)
   response.json(rows[0])
+  console.log(response.json(rows[0]))
 
 });
 
