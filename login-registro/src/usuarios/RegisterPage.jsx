@@ -51,28 +51,29 @@ const RegisterPage = () => {
                 <h5>Formulario Registo</h5>
                 <form id="newForm">
                     <div class="form-floating mb-3">
+                        
                         <input type="text"
                             class="form-control"
-                            id="floatingName"
+                            id="floatingfirstName"
                             placeholder="First name"
                             onChange={(dataname) => setName(dataname.target.value)} />
                         <label for="floatingFName">First name</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Last name"
+                        <input type="text" class="form-control" id="floatinglastName" placeholder="Last name"
                             onChange={(dataLastname) => setLastname(dataLastname.target.value)} />
                         <label for="floatingLName">Last name</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        <input type="email" class="form-control" id="floatingemail" placeholder="name@example.com"
                             onChange={(dataemail) => setEmail(dataemail.target.value)} />
-                        <label for="floatingInput">Email address</label>
+                        <label for="floatingemail">Email address</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingIDnumber" placeholder="ID"
+                        <input type="text" class="form-control" id="floatingIDnumber" placeholder="IDnumber"
                             onChange={(dataIDnumber) => setIDnumber(dataIDnumber.target.value)} />
                         <label for="floatingID">ID number</label>
                     </div>
