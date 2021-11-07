@@ -21,28 +21,11 @@ app.get("/get-buscarusuario", async (request, response) => {
     response.json(rows[0])
 })
 
-
-/* app.get("/get-buscarusuario", async (request, response) => {
-    const email = request.query.email;
-    const [rows, fields] = await connection.execute(`SELECT * FROM registro where email='${email}'`);
-    console.log(rows)
-    response.json(rows[0])
-})
- */
-
-
-
-
 app.get("/get-listadeusuario", async (request, response) => {
     const [rows, fields] = await connection.execute("SELECT * FROM registro");
     response.json({ data: rows });
 })
-
-/* 
-app.get("/get-listadeusuario", async (request, response) => {
-    const [rows, fields] = await connection.execute("SELECT * FROM registro");
-    response.json({ data: rows });
-}) */
+ 
 
 
 /*http://localhost:3001/get-registrodeusuario?email=hernader@gmail.com*/
@@ -60,28 +43,29 @@ app.post("/add-registrodeusuario", async (req, res) => {
     }
 });
 
-/* app.put("/update-editarusuario", (req, res) => {
+app.put("/update-editarusuario", async  (req, res) => {
     try {
-        const idProducto = req.body.idProducto;
-        const { nombre,apellido,email,cedula,contraseña,rol,estado } = req.body;
-        await connection.execute(`UPDATE productos SET nombre='${nombre}', apellido='${apellido}', email='${email}', cedula='${cedula}',contraseña='${contraseña}',rol='${rol}',estado='${estado}' WHERE idProducto = ${idProducto}`);
-        //await connection.execute(`INSERT INTO registro (nombre,apellido,email,cedula,contraseña,rol,estado) VALUES('${nombre}','${apellido}', '${email}','${cedula}','${contraseña}','${rol}','${estado}')`);
-        
+        const { id } = req.body.id;
+        const { nombre, apellido, email, cedula, contraseña, rol, estado } = req.body;
+        await connection.execute(`UPDATE registro SET nombre='${nombre}', apellido='${apellido}', email='${email}', cedula='${cedula}',contraseña='${contraseña}',rol='${rol}',estado='${estado}' WHERE id = ${id}`);
         res.json({ status: "ok" })
     } 
     catch (error) {
         console.log(error);
         res.json(error)
     }
-}); */
-
-app.delete("/delete-eliminarusuario", (req, res) => {
-    const product = req.body;
-    console.log(product.nombre)
-
-    res.json(product);
+});
+ 
+app.delete("/delete-eliminarusuario", async (req, res) => {
+    try {
+        const {id } = req.body;
+        await connection.execute(`DELETE FROM registro WHERE id=${id}`);
+        res.json({ status: "ok" });
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
 })
-
 
 
 // fin de usuario
@@ -105,7 +89,7 @@ app.post("/add-listadeproductos", async (req, res) => {
         res.json(error)
     }
 })
-//inicio santiago  esto no se esta usando
+
 
 app.put("/update-producto", async (req, res) => {
     try {
@@ -131,7 +115,7 @@ app.delete("/delete-producto", async (req, res) => {
         res.json(error);
     }
 });
-//fin santiago
+
 
 
 // --- fin productos---//
