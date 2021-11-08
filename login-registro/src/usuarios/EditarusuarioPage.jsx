@@ -23,7 +23,7 @@ const RegisterPage = () => {
             "estado": state
         };
         const response = await fetch(`${apiBseUrl}/update-editarusuario`, {
-            method: 'put',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -92,9 +92,6 @@ const RegisterPage = () => {
                             onChange={(datastate) => setState(datastate.target.value)} />
                         <label for="floatingState">Estado</label>
                     </div>
-
-
-
 
                     <div>
 

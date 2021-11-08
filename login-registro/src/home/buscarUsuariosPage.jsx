@@ -16,15 +16,14 @@ function ListaElemetos() {
   // actualiza los productos
 
   const actualizarProducto = (evento) => {
-    const id = document.getElementById("floatingidusuario").value;
-    const name = document.getElementById("floatingfirstName").value;
-    const lastname = document.getElementById("floatinglastName").value;
-    const email = document.getElementById("floatingemail").value;
-    const IDnumber = document.getElementById("floatingIDnumber").value;
-    const password = document.getElementById("floatingPassword").value;
-    const rol = document.getElementById("floatingRol").value;
-    const state = document.getElementById("floatingState").value;
-
+    const id = document.getElementById("floatingidusuarioa").value;
+    const name = document.getElementById("floatingfirstNamea").value;
+    const lastname = document.getElementById("floatinglastNamea").value;
+    const email = document.getElementById("floatingemaila").value;
+    const IDnumber = document.getElementById("floatingIDnumbera").value;
+    const password = document.getElementById("floatingPassworda").value;
+    const rol = document.getElementById("floatingRola").value;
+    const state = document.getElementById("floatingStatea").value;
     
     const producto = {
       
@@ -39,8 +38,9 @@ function ListaElemetos() {
     };
 
     console.log(producto);
+
     fetch("http://localhost:3001/update-editarusuario", {
-      method: "put",
+      method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -95,7 +95,6 @@ function ListaElemetos() {
             <div className="contenedor-lista-interno-productos">
 
               <div className="contenedor-lista-producto1">
-                desde1
                 <div className="elemento">
                   <div class="form-floating mb-3">
                     <input type="text" name="ID" class="form-control" id="floatingidusuario" placeholder="Id usuario"
@@ -129,7 +128,10 @@ function ListaElemetos() {
                   </div>
                 </div>
 
-                <div className="elemento">
+              </div>
+              <div className="contenedor-lista-producto2">
+
+              <div className="elemento">
                   <div class="form-floating mb-3">
                     <input type="text" name="cedula" class="form-control" id="floatingIDnumber" placeholder="IDnumber"
                       value={producto.cedula} readOnly />
@@ -169,13 +171,6 @@ function ListaElemetos() {
                   </div>
                 </div>
 
-              </div>
-              aqyu1
-              <div className="contenedor-producto2">
-
-
-                <p>esta es otra caja</p>
-
 
               </div>
             </div>
@@ -209,10 +204,9 @@ function ListaElemetos() {
           <div className="contenedor-informacion">
             <div className="contenedor-producto1">
 
-              desde
               <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="text" name="ID" class="form-control" id="floatingidusuario" placeholder="Id usuario"
+                  <input type="text" name="ID" class="form-control" id="floatingidusuarioa" placeholder="Id usuario"
                     disabled="disabled" value={productoModal.id} readOnly />
                   <label for="floatingFName">Id ususario</label>
                 </div>
@@ -220,7 +214,7 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="text" name="nombre" class="form-control" id="floatingfirstName" placeholder="First name"
+                  <input type="text" name="nombre" class="form-control" id="floatingfirstNamea" placeholder="First name"
                     required="true" />
                   <label for="floatingFName">First name</label>
                 </div>
@@ -228,7 +222,7 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="text" name="apellido" class="form-control" id="floatinglastName" placeholder="Last name"
+                  <input type="text" name="apellido" class="form-control" id="floatinglastNamea" placeholder="Last name"
                     required="true" />
                   <label for="floatingLName">Last name</label>
                 </div>
@@ -236,16 +230,19 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="email" name="email" class="form-control" id="floatingemail" placeholder="name@example.com"
+                  <input type="email" name="email" class="form-control" id="floatingemaila" placeholder="name@example.com"
                     required="true" />
                   <label for="floatingemail">Email address</label>
                 </div>
               </div>
+            </div>
+
+            <div className="contenedor-producto2">
 
 
-              <div className="elemento">
+            <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="text" name="cedula" class="form-control" id="floatingIDnumber" placeholder="IDnumber"
+                  <input type="text" name="cedula" class="form-control" id="floatingIDnumbera" placeholder="IDnumber"
                     required="true" />
                   <label for="floatingIDnumber">ID number</label>
                 </div>
@@ -254,7 +251,7 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating mb-3">
-                  <input type="password" name="contraseña" class="form-control" id="floatingPassword" placeholder="Password"
+                  <input type="password" name="contraseña" class="form-control" id="floatingPassworda" placeholder="Password"
                     required="true" />
                   <label for="floatingPassword">Password</label>
                 </div>
@@ -264,7 +261,7 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating">
-                  <select class="form-select" name="rol" id="floatingRol" aria-label="Floating label select example" >
+                  <select class="form-select" name="rol" id="floatingRola" aria-label="Floating label select example" >
                     <option selected>Open this select menu</option>
                     <option value="1">Vendedor</option>
                     <option value="2">Administrador</option>
@@ -276,7 +273,7 @@ function ListaElemetos() {
 
               <div className="elemento">
                 <div class="form-floating">
-                  <select class="form-select" name="estado" id="floatingState" aria-label="Floating label select example">
+                  <select class="form-select" name="estado" id="floatingStatea" aria-label="Floating label select example">
                     <option selected>Open this select menu</option>
                     <option value="1">Autorizado</option>
                     <option value="2">No autorizado</option>
@@ -284,13 +281,6 @@ function ListaElemetos() {
                   <label for="floatingState">Estado</label>
                 </div>
               </div>
-              aqui
-            </div>
-
-            <div className="contenedor-producto2">
-
-
-              <p>esta es otra caja</p>
 
 
             </div>

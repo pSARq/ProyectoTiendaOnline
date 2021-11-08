@@ -45,7 +45,7 @@ app.post("/add-registrodeusuario", async (req, res) => {
 
 app.put("/update-editarusuario", async  (req, res) => {
     try {
-        const { id } = req.body.id;
+        const id = req.body.id;
         const { nombre, apellido, email, cedula, contraseña, rol, estado } = req.body;
         await connection.execute(`UPDATE registro SET nombre='${nombre}', apellido='${apellido}', email='${email}', cedula='${cedula}',contraseña='${contraseña}',rol='${rol}',estado='${estado}' WHERE id = ${id}`);
         res.json({ status: "ok" })
@@ -55,6 +55,8 @@ app.put("/update-editarusuario", async  (req, res) => {
         res.json(error)
     }
 });
+
+
  
 app.delete("/delete-eliminarusuario", async (req, res) => {
     try {
