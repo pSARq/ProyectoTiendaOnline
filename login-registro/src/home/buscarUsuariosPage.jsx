@@ -371,8 +371,10 @@ function ListaElemetos() {
                 </div>
               </div>
 
-
-              <div className="elemento">
+            </div>
+ 
+            <div className="contenedor-producto2">
+            <div className="elemento">
                 <div class="form-floating mb-3">
                   <input type="text" name="cedula" class="form-control" id="floatingIDnumber" placeholder="IDnumber"
                     value={productoModal.cedula} readOnly />
@@ -413,11 +415,6 @@ function ListaElemetos() {
                   <label for="floatingRol">Rol</label>
                 </div>
               </div>
-
-            </div>
- 
-            <div className="contenedor-producto2">
-            <p>esta es otra caja eliminar</p>
 
             </div>
           </div>

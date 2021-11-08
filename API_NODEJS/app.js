@@ -83,7 +83,7 @@ app.get("/get-listadeproductos", async (request, response) => {
 app.post("/add-listadeproductos", async (req, res) => {
     try {
         const { nombre, preciounitario, stock, estado, descripcion } = req.body;
-        await connection.execute(`INSERT INTO productos (nombre, preciounitario, stock, estado,descripcion) VALUES('${nombre}',${preciounitario}, ${stock},'${estado}','${descripcion}')`);
+        await connection.execute(`INSERT INTO productos (nombre, preciounitario, estado,descripcion) VALUES('${nombre}',${preciounitario}, '${estado}','${descripcion}')`);
         res.json({ status: "ok" })
     }
     catch (error) {
@@ -95,10 +95,10 @@ app.post("/add-listadeproductos", async (req, res) => {
 
 app.put("/update-producto", async (req, res) => {
     try {
-        const idProducto = req.body.idProducto;
-        const { nombre, valorUnitario, estado, descripcion } = req.body;
+        const id = req.body.id;
+        const { nombre, preciounitario, estado, descripcion } = req.body;
         await connection.execute(
-            `UPDATE productos SET nombre='${nombre}', valorUnitario=${valorUnitario}, estado='${estado}', descripcion='${descripcion}' WHERE idProducto = ${idProducto}`
+            `UPDATE productos SET nombre='${nombre}', precioUnitario=${preciounitario}, estado='${estado}', descripcion='${descripcion}' WHERE id = ${id}`
         );
         res.json({ status: "ok" });
     } catch (error) {
@@ -109,8 +109,8 @@ app.put("/update-producto", async (req, res) => {
 
 app.delete("/delete-producto", async (req, res) => {
     try {
-        const idProducto = req.body.idProducto;
-        await connection.execute(`DELETE FROM productos WHERE idProducto=${idProducto}`);
+        const id = req.body.id;
+        await connection.execute(`DELETE FROM productos WHERE id=${id}`);
         res.json({ status: "ok" });
     } catch (error) {
         console.log(error);

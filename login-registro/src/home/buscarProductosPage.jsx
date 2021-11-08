@@ -294,7 +294,7 @@ function ListaProductos() {
 
               <div className="elemento">
                 <label>Valor por unidad</label>
-                <input type="number" name="precio" id="valor" required="true" value={productoModal.valorUnitario} readOnly />
+                <input type="number" name="precio" id="valor" required="true" value={productoModal.preciounitario} readOnly />
               </div>
 
               <div className="elemento">
