@@ -9,21 +9,18 @@ import Acceso from '../acceso/Acceso';
 
 
 function RegistrarVentas() {
-    function fAgrega() {
-        document.getElementById("pedido").value = document.getElementById("Text").value;
-    }
-
-
+   
     const [validUser, setValidUser] = useState(false);
     const { user, isAuthenticated } = useAuth0();
     const { loginWithRedirect } = useAuth0();
 
-
+    
     const [products, setProducts] = useState([]);
-
+    const [agregar,setAgregar] = useState("");
+    
     const agregarPedido = (evento) => {
 
-        const fecha = document.getElementById("fecha").value;
+        const fecha = document.getElementById("fecha").value; 
         const pedido = document.getElementById("pedido").value;
         const n_vendedor = document.getElementById("n_vendedor").value;
         const n_comprador = document.getElementById("n_comprador").value;
@@ -45,43 +42,19 @@ function RegistrarVentas() {
             },
             body: JSON.stringify(pedidos),
         });
-
+       
     }
-
-
     const getProducts = async () => {
         try {
-            const response = await fetch("http://localhost:5000/get-products");
+           const response = await fetch("http://localhost:5000/get-products");
             const jsonResponse = await response.json();
-            const responseProducts = jsonResponse.data;
-            const listProducts = responseProducts.map((product) =>
+            //const responseProducts = jsonResponse.data;
+            setProducts(jsonResponse.data)
+        //const listProducts = responseProducts.map((product)=>
 
+           // );
 
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox"  />
-
-                    <label class="form-check-label" for="flexCheckDefault" >
-
-                        <span >{product.idProducto}</span>&nbsp;&nbsp;<span>{product.nombre}</span>&nbsp;&nbsp;
-
-                        <input type="number" className="camp-num" id="cantidad" />&nbsp;&nbsp;
-
-
-
-
-
-                    </label>
-
-                </div>
-
-
-
-
-            );
-
-            setProducts(listProducts);
-
+           // setProducts(listProducts);
 
         }
         catch (error) {
@@ -89,8 +62,6 @@ function RegistrarVentas() {
         }
 
     }
-
-
     const validateUserRole = async () => {
         const response = await fetch(`http://localhost:5000/get-user?email=${user.email}`);
         const jsonResponse = await response.json();
@@ -138,10 +109,6 @@ function RegistrarVentas() {
     useEffect(() => {
         grantAccess();
     }, [isAuthenticated, validUser]);
-
-
-
-
     return (
         <Fragment>
 
@@ -162,81 +129,35 @@ function RegistrarVentas() {
                             onSubmit={agregarPedido}
                         >
                             <div className="row caja-r">
-                                <div className="col-12 col-lg-6">
-
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id </th>
-                                            <th scope="col">Nombre</th>
-
-                                            <th scope="col">Cantidad</th>
-
-                                        </tr>
-                                    </thead>
-
-                                    {products}
-
-
-
-
-                                    {/* &nbsp;&nbsp; ID &nbsp;<input type="number" className="camp-num" id="" />
-                                    <br />
-                                    <br />
-                                    Cantidad<input type="number" className="camp-num" id="" />
-                                    <br />
-                                    <br />
-
-                                    <input type="submit" value="Agregar" className="boton-r" />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <table id="listado" class='hide '  >
-                                        <tr class="barr-a ">
-
-                                            <th>Id </th>
-
-                                            <th>Producto</th>
-
-
-                                            <th>Cantidad</th>
-
-                                            <th>Precio unitario</th>
-
-                                            <th>Subtotal</th>
-
-                                        </tr>
-                                        <tr >
-                                            <td></td>
-
-
-                                            <td>(borrador)</td>
-
-
-                                            <td>(borrador)</td>
-
-                                            <td>(borrador)</td>
-
-                                            <td>(borrador)</td>
-                                        </tr>
-
-    </table>
-                               <label>Total a pagar</label><input type="text" name="Total a pagar" disabled="disabled"></input>
-                                <br />
-    <br />
-                                <Link to="/venta-exitosa" class ="btn boton-r" onClick={calculate}>Enviar</Link>&nbsp; &nbsp; &nbsp; <Link to="/" class ="btn boton-r" >Crear nueva venta</Link>
-    */}
-                                </div>
-
+                               
                                 <div class="col-12 col-lg-6">
                                     &nbsp;&nbsp; Vendedor:&nbsp;&nbsp;<input type="text" name="n_vendedor" id="n_vendedor" value={user.name} disabled="disabled"></input>
-                                    <input type="text" name="pedido" id="pedido" />
-                                    {products}
-                                    <br />
-
+                     
                                     &nbsp;&nbsp;Fecha venta<input type="date" name="fecha" id="fecha" />
                                     <br />
                                     <br />
+                                    {products.map((product)=>
+                                     <div class="form-check">
+                                     <input class="form-check-input" type="checkbox" id="pedido" name="pedido" value={product.nombre}/>
+                 
+                                     <label class="form-check-label" for="flexCheckDefault"  value={product.nombre}>
+                                     <label>{product.idProducto}</label><label>{product.nombre}</label>
+                                       
+                                        
+                 
+                                         <input type="number" className="camp-num" id="cantidad" />&nbsp;&nbsp;
+                 
+                                     </label>
+                 
+                                 </div>
+                             )
+                                      
+
+
+                             }
+                                  
                                     <br />
+                                    
                                     <center>Datos del cliente</center>
                                     <br />
                                     <p>&nbsp;&nbsp;Nombres:&nbsp;&nbsp;<input type="text" name="n_comprador" id="n_comprador" /></p>
