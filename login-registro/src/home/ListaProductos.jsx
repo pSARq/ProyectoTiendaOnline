@@ -16,7 +16,7 @@ function ListaProductos() {
                     <th scope="row">{elemento.id}</th>
                     <td>{elemento.nombre}</td>
                     <td>{elemento.preciounitario}</td>
-                    <td>{elemento.stock}</td>
+                    {/* <td>{elemento.stock}</td> */}
                     <td>{elemento.estado}</td>
                     <td>{elemento.descripcion}</td>
                     
@@ -43,7 +43,7 @@ function ListaProductos() {
                         <th scope="col">ID</th>
                         <th scope="col">NOMBRE</th>
                         <th scope="col">PRECIO UNITARIO</th>
-                        <th scope="col">STOCK</th>
+                        {/* <th scope="col">STOCK</th> */}
                         <th scope="col">ESTADO</th>
                         <th scope="col">DESCRIPCION</th>
                     </tr>

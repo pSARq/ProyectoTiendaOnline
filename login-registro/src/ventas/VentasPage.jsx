@@ -4,22 +4,22 @@ import './registerStyles.css';
 //import logo from '../assets/img/logo.png';
 //import apiBseUrl from '../shared/utils/Api';
 
-const VentasPage = () => {
+ const VentasPage = () => {
 
-    function producto() {
+/*    function producto() {
         const input1 = document.getElementById("Cantidad").value.toLowerCase();
         const input2 = document.getElementById("Valor").value.toLowerCase();
         var valor3 = input1 * input2;
         document.getElementById("Subtotal").value = valor3;
     }
-
-    function genera_tabla() {
+ */
+    /* function genera_tabla() {
 
         var tblBody = document.querySelector("tbody");
-        
-        var hilera =React.createElement("tr");
 
-        var ID = document.createElement("td");
+        var hilera = React.createElement("tr");
+
+        var ID = React.createElement("td");
         var valor1 = document.getElementById("ID").value;
         //const input2 = document.getElementById('Valor').value.toLowerCase();
         //var textoCelda = document.createTextNode(valor);
@@ -27,14 +27,14 @@ const VentasPage = () => {
         hilera.appendChild(ID);
         tblBody.appendChild(hilera);
 
-        var Descripcion = document.createElement("td");
+        var Descripcion = React.createElement("td");
         var valor2 = document.getElementById("Descripcion").value;
         //var textoCelda = document.createTextNode(valor);
         Descripcion.appendChild(valor2);
         hilera.appendChild(Descripcion);
         tblBody.appendChild(hilera);
 
-        var Magnitud = document.createElement("td");
+        var Magnitud = React.createElement("td");
         var valor3 = document.getElementById("Magnitud").value;
         //const input1 = document.getElementById('Valor').value.toLowerCase();
         //var textoCelda = document.createTextNode(valor);
@@ -42,14 +42,14 @@ const VentasPage = () => {
         hilera.appendChild(Magnitud);
         tblBody.appendChild(hilera);
 
-        var Cantidad = document.createElement("td");
+        var Cantidad = React.createElement("td");
         var valor4 = document.getElementById("Cantidad").value;
         //var textoCelda = document.createTextNode(valor);
         Cantidad.appendChild(valor4);
         hilera.appendChild(Cantidad);
         tblBody.appendChild(hilera);
 
-        var Valor = document.createElement("td");
+        var Valor = React.createElement("td");
         var valor5 = document.getElementById('Valor').value;
         //const input2 = document.getElementById('Valor').value.toLowerCase();
         //var textoCelda = document.createTextNode(valor);
@@ -57,7 +57,7 @@ const VentasPage = () => {
         hilera.appendChild(Valor);
         tblBody.appendChild(hilera);
 
-        var Subtotal = document.createElement("td");
+        var Subtotal = React.createElement("td");
         Subtotal.setAttribute('id', 'totalitem[]');
         var valor6 = document.getElementById("Subtotal").value;
         //var textoCelda = document.createTextNode(valor);
@@ -65,13 +65,13 @@ const VentasPage = () => {
         hilera.appendChild(Subtotal);
         tblBody.appendChild(hilera);
 
-        var eliminar = document.createElement("td");
-        eliminar.setAttribute('style', 'text-align: center;');
+        var eliminar = React.createElement("td");
+        //eliminar.setAttribute('style', 'text-align: center;');
         eliminar.innerHTML = '<input type="button" class="btn btn-success"  value="-"/>';
         hilera.appendChild(eliminar);
 
     }
-
+ */
 
     return (
         <Fragment >
@@ -80,21 +80,36 @@ const VentasPage = () => {
                 {/* <img src="assets/img/logo.png"> */}
                 <h5>Detalle de venta</h5>
 
-                <label for="ID">ID: </label>
-                <input class="controls" type="text" disabled="disabled" name="ID" value="" />
-                <label for="Nombre">Nombre: </label>
-                <input class="controls" type="text" name="Nombre" value="" />
-                <label for="Cedula">Cedula: </label>
-                <input class="controls" type="text" name="Cedula" value="" />
-                <label for="Fecha">Fecha: </label>
-                <input class="controls" type="" name="Fecha" value="" />
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingDate" placeholder="Date" />
+                    <label for="floatingDate">Fecha</label>
+                </div>
 
-                <select name="Estado" class="controls">
-                    <option selectd="" value="">Estado</option>
-                    <option value="En proceso">En proceso</option>
-                    <option value="Cancelada">Cancelada</option>
-                    <option value="Entregada">Entregada</option>
-                </select>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInvoice" placeholder="Invoice" />
+                    <label for="floatingInvoice">Factura</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingSeller" placeholder="Seller" />
+                    <label for="floatingSeller">Vendedor</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingCustomer" placeholder="Customer" />
+                    <label for="floatingCustomer">Cliente</label>
+                </div>
+                
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <option selectd="" value="">Open this menu to select status</option>
+                        <option value="En proceso">En proceso</option>
+                        <option value="Cancelada">Cancelada</option>
+                        <option value="Entregada">Entregada</option>
+                    </select>
+                    <label for="floatingSelect">Estado</label>
+                </div>
+
 
                 <table class="table">
                     <thead>
@@ -108,7 +123,7 @@ const VentasPage = () => {
                             <th scope="col" >Subtotal</th>
 
                         </tr>
-
+{/* 
                         <tr>
                             <th><input type="text" class="form-control" name="ID" id="ID" /></th>
                             <th><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></th>
@@ -116,11 +131,59 @@ const VentasPage = () => {
                             <th><input class="form-control" type="number" name="cantidad" id="Cantidad" /></th>
                             <th><input class="form-control" type="number" name="valor" id="Valor" onKeyUp={producto} /></th>
                             <th><input class="form-control" disabled="disabled" type="number" name="subtotal" id="Subtotal" /></th>
-                            <th><input type="button" class="btn btn-success" id="adicionar" onclick={genera_tabla} value="+" /></th>
-                        </tr>
+                             <th><input type="button" class="btn btn-success" id="adicionar" onclick={genera_tabla} value="+" /></th> 
+                        </tr> */}
                     </thead>
 
                     <tbody>
+
+                    <tr>
+                            <td><input type="text" class="form-control" name="ID" id="ID" /></td>
+                            <td><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></td>
+                            <td><input class="form-control" type="text" name="Magnitud" id="Magnitud" /></td>
+                            <td><input class="form-control" type="number" name="cantidad" id="Cantidad" /></td>
+                            <td><input class="form-control" type="number" name="valor" id="Valor" /* onKeyUp={producto} */ /></td>
+                            <td><input class="form-control" /* disabled="disabled" */ type="number" name="subtotal" id="Subtotal" /></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="ID" id="ID" /></td>
+                            <td><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></td>
+                            <td><input class="form-control" type="text" name="Magnitud" id="Magnitud" /></td>
+                            <td><input class="form-control" type="number" name="cantidad" id="Cantidad" /></td>
+                            <td><input class="form-control" type="number" name="valor" id="Valor" /* onKeyUp={producto} */ /></td>
+                            <td><input class="form-control" /* disabled="disabled" */ type="number" name="subtotal" id="Subtotal" /></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="ID" id="ID" /></td>
+                            <td><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></td>
+                            <td><input class="form-control" type="text" name="Magnitud" id="Magnitud" /></td>
+                            <td><input class="form-control" type="number" name="cantidad" id="Cantidad" /></td>
+                            <td><input class="form-control" type="number" name="valor" id="Valor" /* onKeyUp={producto} */ /></td>
+                            <td><input class="form-control" /* disabled="disabled" */ type="number" name="subtotal" id="Subtotal" /></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="ID" id="ID" /></td>
+                            <td><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></td>
+                            <td><input class="form-control" type="text" name="Magnitud" id="Magnitud" /></td>
+                            <td><input class="form-control" type="number" name="cantidad" id="Cantidad" /></td>
+                            <td><input class="form-control" type="number" name="valor" id="Valor" /* onKeyUp={producto} */ /></td>
+                            <td><input class="form-control" /* disabled="disabled" */ type="number" name="subtotal" id="Subtotal" /></td>
+                           
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="ID" id="ID" /></td>
+                            <td><input class="form-control" type="text" name="Descripcion" id="Descripcion" /></td>
+                            <td><input class="form-control" type="text" name="Magnitud" id="Magnitud" /></td>
+                            <td><input class="form-control" type="number" name="cantidad" id="Cantidad" /></td>
+                            <td><input class="form-control" type="number" name="valor" id="Valor" /* onKeyUp={producto} */ /></td>
+                            <td><input class="form-control" /* disabled="disabled"  */type="number" name="subtotal" id="Subtotal" /></td>
+                           
+                        </tr>
+
+
                     </tbody>
 
                 </table>
