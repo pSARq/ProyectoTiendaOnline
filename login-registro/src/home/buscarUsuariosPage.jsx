@@ -263,8 +263,8 @@ function ListaElemetos() {
                 <div class="form-floating">
                   <select class="form-select" name="rol" id="floatingRola" aria-label="Floating label select example" >
                     <option selected>Open this select menu</option>
-                    <option value="1">Vendedor</option>
-                    <option value="2">Administrador</option>
+                    <option value="Vendedor">Vendedor</option>
+                    <option value="Administrador">Administrador</option>
                   </select>
                   <label for="floatingRol">Rol</label>
                 </div>
@@ -275,8 +275,8 @@ function ListaElemetos() {
                 <div class="form-floating">
                   <select class="form-select" name="estado" id="floatingStatea" aria-label="Floating label select example">
                     <option selected>Open this select menu</option>
-                    <option value="1">Autorizado</option>
-                    <option value="2">No autorizado</option>
+                    <option value="Autorizado">Autorizado</option>
+                    <option value="No autorizado">No autorizado</option>
                   </select>
                   <label for="floatingState">Estado</label>
                 </div>

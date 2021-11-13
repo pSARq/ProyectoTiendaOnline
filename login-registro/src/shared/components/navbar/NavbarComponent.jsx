@@ -27,7 +27,7 @@ function NavbarComponent(props) {
                 {/* <Link to="/Registrodeusuarios" > <button> buscar usuarios</button></Link> */}
                 <Link to="/buscarusuarios" > <button> buscar usuarios</button></Link>
                 <Link to="/Listadeusuarios" > <button> Lista de usuarios</button></Link>
-                <Link to="/editaruarios" > <button> Editar usuario</button></Link>
+                {/* <Link to="/editaruarios" > <button> Editar usuario</button></Link> */}
 
 
                 <Link to="/Productos" > <button> Productos</button></Link>
@@ -35,7 +35,7 @@ function NavbarComponent(props) {
                 <Link to="/listadeproductos" > <button> Lista de productos</button></Link>
 
 
-                {/* <Link to="/Ventas"  > <button> Vender</button></Link> */}
+                <Link to="/Ventas"  > <button> Vender</button></Link> 
 
 
 

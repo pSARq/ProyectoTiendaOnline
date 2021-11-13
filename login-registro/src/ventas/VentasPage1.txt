@@ -1,0 +1,129 @@
+import React, { Fragment, useState } from 'react';
+import './registerStyles.css';
+import logo from '../assets/img/logo.png';
+import apiBseUrl from '../shared/utils/Api';
+
+const RegisterPage = () => {
+    const [name, setName] = useState("");
+    const [Lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [IDnumber, setIDnumber] = useState(0);
+    const [password, setPassword] = useState("");
+
+    const enviardatos = async () => {
+        const elementos = {
+            "nombre": name,
+            "apellido": Lastname,
+            "email": email,
+            "cedula": IDnumber,
+            "contraseña": password,
+            "rol": "",
+            "estado": "pendiente"
+        };
+        const response = await fetch(`${apiBseUrl}/add-registrodeusuario`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(elementos),
+        });
+        const jsonResponse = await response.json();
+
+
+        document.getElementById("newForm").reset();
+        alert("registro realizado con exito")
+    }
+
+    /* const cancelCourse = () => { 
+        document.getElementById("create-course-form").reset();
+      }
+
+ */
+
+
+
+    return (
+        <Fragment >
+            <section className="form-registro">
+
+                <img src={logo} alt="" />
+
+                <h5>Formulario de Facturacion</h5>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" placeholder="FACTURA" value="" />
+                    <label for="FACTURA">FACTURA:</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="" name="Fecha" placeholder="Fecha" value="" />
+                    <label for="Fecha">Fecha: </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" name="Nombrevendedor" placeholder="Nombre vendedor:" value="" />
+                    <label for="Nombre">Nombre vendedor: </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" name="Nombrevendedor" placeholder="Nombre comprador:" value="" />
+                    <label for="Nombre">Nombre comprador: </label>
+                </div>
+
+                <select name="Estado" class="form-control">
+                    <option selectd="" value="">Estado</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Cancelada">Cancelada</option>
+                    <option value="Entregada">Entregada</option>
+
+                </select>
+
+                </section>
+
+                {/* ------------------------------------- */}
+                <table border="1" class="span" id="tabla1">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th style="text-align: center;"> Descripcion </th>
+                            <th style="text-align: center;">Magnitud</th>
+                            <th style="text-align: center;">Cantidad</th>
+                            <th style="text-align: center;">Valor</th>
+                            <th style="text-align: center;">Subtotal</th>
+                        </tr>
+
+                        <tr>
+
+                            <th><input class="form-control" type="text" name="ID" id="ID" value="" /></th>
+
+                            <th><input class="form-control" type="text" name="Descripcion" id="Descripcion" value="" /></th>
+
+                            <th><input class="form-control" type="text" name="Magnitud" id="Magnitud" value="" /></th>
+
+                            <th><input class="form-control" type="number" name="cantidad" id="Cantidad" value="" /></th>
+
+                            <th><input class="form-control" type="number" name="valor" id="Valor" onkeyup="general()" value="" /></th>
+
+                            <th><input class="form-control" disabled="disabled" type="number" name="subtotal" id="Subtotal" value="" /></th>
+
+                            <th><input type="button" class="btn btn-success" id="adicionar" onclick="genera_tabla()" value="+" /></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table >
+
+                <label for="Total">Total: </label>
+
+                <td><span id="total">0</span> <input class="form-control" type="hidden" id="total_final" name="total_final" value="0" readonly /></td>
+                {/* <!--codigo del segundo boton guardar--> */}
+                <button class="buttons" >Guardar</button>
+
+            
+        </Fragment>
+    )
+}
+export default RegisterPage;

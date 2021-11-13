@@ -30,7 +30,7 @@ function InformeUsuario() {
           <td>{elementos.contraseña}</td>
           <td>{elementos.rol}</td>
           <td>{elementos.estado}</td>
-          <td><Link to="/editaruarios" ><input type="button" class="btn btn-success"  value="EDITAR"/></Link></td>
+          {/* <td><Link to="/editaruarios" ><input type="button" class="btn btn-success"  value="EDITAR"/></Link></td> */}
           
         </tr>
       ); 
@@ -114,7 +114,7 @@ function InformeUsuario() {
               <th scope="col">CONTRASEÑA</th>
               <th scope="col">ROL</th>
               <th scope="col">ESTADO</th>
-              <th scope="col">ACCION</th>
+              {/* <th scope="col">ACCION</th> */}
             </tr>
           </thead>
           <tbody>
