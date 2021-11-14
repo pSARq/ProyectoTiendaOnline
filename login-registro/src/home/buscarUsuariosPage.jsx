@@ -3,6 +3,7 @@ import "./EstiloListaProductos.css";
 //import "../productos/productosStyles.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { FaSearch } from "react-icons/fa";
+import apiBseUrl from '../shared/utils/Api';
 
 function ListaElemetos() {
   const [mostrarM, setMostrarM] = useState(false);
@@ -39,7 +40,7 @@ function ListaElemetos() {
 
     console.log(producto);
 
-    fetch("http://localhost:3001/update-editarusuario", {
+    fetch(`${apiBseUrl}/update-editarusuario`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -81,7 +82,7 @@ function ListaElemetos() {
 
   const getProductos = async () => {
     try {
-      const response = await fetch("http://localhost:3001/get-listadeusuario");
+      const response = await fetch(`${apiBseUrl}/get-listadeusuario`);
       const jsonResponse = await response.json();
       const responseProductos = jsonResponse.data;
       const listProductos = responseProductos.map((producto) => (
@@ -309,7 +310,7 @@ function ListaElemetos() {
     };
     console.log(producto);
 
-    fetch("http://localhost:3001/delete-eliminarusuario", {
+    fetch(`${apiBseUrl}/delete-eliminarusuario`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -441,7 +442,7 @@ function ListaElemetos() {
     const terminoBusqueda = document.getElementById("buscar").value;
     let exite = false;
 
-    const response = await fetch("http://localhost:3001/get-listadeusuario");
+    const response = await fetch(`${apiBseUrl}/get-listadeusuario`);
     const jsonResponse = await response.json();
     arregloProductos = jsonResponse.data;
 

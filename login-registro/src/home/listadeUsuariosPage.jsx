@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router';
 import ForbidenComponent from '../shared/components/forbiden/ForbidenComponent';
 import { Link } from 'react-router-dom';
+import apiBseUrl from '../shared/utils/Api';
 
 
 function InformeUsuario() {
@@ -13,7 +14,7 @@ function InformeUsuario() {
   const getElementos = async () => {
   
     try {
-    const response = await fetch("http://localhost:3001/get-listadeusuario");
+    const response = await fetch(`${apiBseUrl}/get-listadeusuario`);
       
       const jsonResponse = await response.json();
       //console.log(jsonResponse)
@@ -46,7 +47,7 @@ function InformeUsuario() {
 
 
   const validateUserRole = async () => {
-    const response = await fetch(`http://localhost:3001/get-listadeusuario?email=${user.email}`);
+    const response = await fetch(`${apiBseUrl}/get-listadeusuario?email=${user.email}`);
     const jsonResponse = await response.json();
     return jsonResponse;
   }

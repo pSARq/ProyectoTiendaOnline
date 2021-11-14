@@ -2,13 +2,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router';
 import ForbidenComponent from '../shared/components/forbiden/ForbidenComponent';
-
+import apiBseUrl from '../shared/utils/Api';
 
 function ListaProductos() {
     const [elemento, setElementos] = useState([]);
     const getElementos = async () => {
         try {
-            const respnse = await fetch("http://localhost:3001/get-listadeproductos");
+            const respnse = await fetch(`${apiBseUrl}/get-listadeproductos`);
             const JsonRespnse = await respnse.json();
             const responseElementos = JsonRespnse.data;
             const listElementos = responseElementos.map((elemento) =>
