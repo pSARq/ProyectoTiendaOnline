@@ -4,6 +4,7 @@ import "./EstiloListaProductos.css";
 //import "../productos/productosStyles.css";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { FaSearch } from "react-icons/fa";
+import apiBseUrl from '../shared/utils/Api'; 
 
 function ListaProductos() {
   const [mostrarM, setMostrarM] = useState(false);
@@ -35,7 +36,7 @@ function ListaProductos() {
 
     console.log(producto);
 
-    fetch("http://localhost:3001/update-producto", {
+    fetch(`${apiBseUrl}/update-producto`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -77,7 +78,7 @@ function ListaProductos() {
 
   const getProductos = async () => {
     try {
-      const response = await fetch("http://localhost:3001/get-listadeproductos");
+      const response = await fetch(`${apiBseUrl}/get-listadeproductos`);
       const jsonResponse = await response.json();
       const responseProductos = jsonResponse.data;
       const listProductos = responseProductos.map((producto) => (
@@ -256,7 +257,7 @@ function ListaProductos() {
     };
     console.log(producto);
 
-    fetch("http://localhost:3001/delete-producto", {
+    fetch(`${apiBseUrl}/delete-producto`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -349,7 +350,7 @@ function ListaProductos() {
     const terminoBusqueda = document.getElementById("buscar").value;
     let exite = false;
 
-    const response = await fetch("http://localhost:3001/get-listadeproductos");
+    const response = await fetch(`${apiBseUrl}/get-listadeproductos`);
     const jsonResponse = await response.json();
     arregloProductos = jsonResponse.data;
 

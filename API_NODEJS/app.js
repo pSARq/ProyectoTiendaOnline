@@ -12,6 +12,10 @@ app.use(cors({ origin: true }));
 /*rama main*/
 app.set('port', process.env.PORT || port)
 
+app.get("/", (req,res)=>{
+    res.json("prueba del backend remoto en heroku")
+})
+
 // inicio usuario
 
 app.get("/get-buscarusuario", async (request, response) => {
@@ -122,21 +126,41 @@ app.delete("/delete-producto", async (req, res) => {
 
 // --- fin productos---//
 
+//---- VENTAS-----//
+app.post("/add-venta", async (req, res) => {
+    try {
+        const { factura, cedula,  estado, descripcion } = req.body;
+        await connection.execute(`INSERT INTO ventas (factura, cedula, estado,descripcion) VALUES('${factura}',${cedula}, '${estado}','${descripcion}')`);
+        res.json({ status: "ok" })
+    }
+    catch (error) {
+        console.log(error);
+        res.json(error)
+    }
+})
+
+app.get("/get-listadeventas", async (request, response) => {
+    const [rows, fields] = await connection.execute("SELECT * FROM ventas");
+    console.log({ data: rows })
+    response.json({ data: rows });
+})
+
+//--- fin Ventas----///
+
 
 app.listen(app.get('port'), async () => {
     connection = await mysql.createConnection({
 
-        host: 'localhost',
-        user: 'root',
-        password: 'Password',
-        database: 'shop',
+        // host: 'localhost',
+        // user: 'root',
+        // password: 'MYSQL',
+        // database: 'misticbd',
 
-        /* host:'sql10.freesqldatabase.com',
-        user: 'sql10446300',
-        password:'yjDX4GnX4T',
-        database:'sql10446300',
-        port: 3306, */
-
+        host:'sql10.freesqldatabase.com',
+        user: 'sql10451143',
+        password:'Y1Mkn4qTy6',
+        database:'sql10451143',
+        port: 3306, 
         Promise: bluebierd,
 
     });

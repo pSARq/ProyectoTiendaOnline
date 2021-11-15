@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import './loginStyles.css';
 import logo from '../assets/img/logo.png';
+import apiBseUrl from '../shared/utils/Api';
 
 function LoginPage() {
 
